@@ -9,6 +9,7 @@ namespace Signals
     public class QuestionSignals : MonoSingleton<QuestionSignals>
     {
         public Func<int,string> onGetQuestion = delegate { return ""; };
+        public UnityAction<string> onPlayerHitEnterButton = delegate { };
 
     }
 }

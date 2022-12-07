@@ -2,8 +2,10 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Signals;
+using Sirenix.OdinInspector;
 
-public class AnswerTableManager
+public class AnswerTableManager : MonoBehaviour
 {
 	public class Row
 	{
@@ -12,9 +14,49 @@ public class AnswerTableManager
 		public string answer;
 
 	}
+	#region Self Variables
+	#region Public Variables
+	#endregion
 
+	#region SerializeField Variables
+	[SerializeField] private TextAsset answerFile;
+	#endregion
+
+	#region Private Variables
+	[ShowInInspector]
 	private List<Row> _rowList = new List<Row>();
 	private bool _isLoaded = false;
+	#endregion
+	#endregion
+	private void Awake()
+	{
+		Load(answerFile);
+	}
+	#region Event Subscriptions
+
+	private void OnEnable()
+	{
+		SubscribeEvents();
+	}
+
+	private void SubscribeEvents()
+	{
+		QuestionSignals.Instance.onPlayerHitEnterButton += OnComparison;
+	}
+
+	private void UnsubscribeEvents()
+	{
+		QuestionSignals.Instance.onPlayerHitEnterButton -= OnComparison;
+
+	}
+
+	private void OnDisable()
+	{
+		UnsubscribeEvents();
+	}
+
+	#endregion
+
 
 	public bool IsLoaded()
 	{
@@ -70,13 +112,24 @@ public class AnswerTableManager
 	{
 		return _rowList.FindAll(x => x.id == find);
 	}
-	public Row Find_answer(string find)
-	{
-		return _rowList.Find(x => x.answer == find);
+	public bool Find_answer(string find)
+	{		
+		foreach (var i in _rowList)
+        {
+            if (find.ToString().Equals(i.answer.ToString()))
+            {
+				return true;
+            }
+        }
+		return false;
 	}
 	public List<Row> FindAll_answer(string find)
 	{
 		return _rowList.FindAll(x => x.answer == find);
 	}
+	public void OnComparison(string typedValue)
+    {
+		Debug.Log(Find_answer((typedValue).Remove(typedValue.Length - 1)));
+    }
 
 }

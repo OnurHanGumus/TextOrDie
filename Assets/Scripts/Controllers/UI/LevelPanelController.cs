@@ -15,7 +15,7 @@ public class LevelPanelController : MonoBehaviour
     #endregion
     #region SerializeField Variables
     [SerializeField] private TextMeshProUGUI scoreTxt;
-    [SerializeField] private TextMeshProUGUI questionText;
+    [SerializeField] private TextMeshProUGUI questionText, answerText;
     #endregion
     #region Private Variables
 
@@ -50,5 +50,10 @@ public class LevelPanelController : MonoBehaviour
     public void AskQuestion()
     {
         questionText.text = QuestionSignals.Instance.onGetQuestion(0);
+    }
+
+    public void PlayerHitEnterButton()
+    {
+        QuestionSignals.Instance.onPlayerHitEnterButton?.Invoke(answerText.text);
     }
 }

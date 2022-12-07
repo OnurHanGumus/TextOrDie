@@ -23,14 +23,15 @@ public class QuestionsTableManager : MonoBehaviour
 	#region Private Variables
 	private List<Row> _rowList = new List<Row>();
 	private bool _isLoaded = false;
-    #endregion
-    #endregion
-    #region Event Subscriptions
-    private void Awake()
-    {
+	#endregion
+	#endregion
+	private void Awake()
+	{
 		Load(questionFile);
-    }
-    private void OnEnable()
+	}
+	#region Event Subscriptions
+
+	private void OnEnable()
 	{
 		SubscribeEvents();
 	}
