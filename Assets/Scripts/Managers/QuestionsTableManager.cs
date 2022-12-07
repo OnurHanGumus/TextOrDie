@@ -2,8 +2,9 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Signals;
 
-public class QuestionsTableManager
+public class QuestionsTableManager : MonoBehaviour
 {
 	public class Row
 	{
@@ -16,12 +17,39 @@ public class QuestionsTableManager
 	#endregion
 
 	#region SerializeField Variables
+	[SerializeField] private TextAsset questionFile;
 	#endregion
 
 	#region Private Variables
 	private List<Row> _rowList = new List<Row>();
 	private bool _isLoaded = false;
-	#endregion
+    #endregion
+    #endregion
+    #region Event Subscriptions
+    private void Awake()
+    {
+		Load(questionFile);
+    }
+    private void OnEnable()
+	{
+		SubscribeEvents();
+	}
+
+	private void SubscribeEvents()
+	{
+		QuestionSignals.Instance.onGetQuestion += OnGetQuestion;
+	}
+
+	private void UnsubscribeEvents()
+	{
+		QuestionSignals.Instance.onGetQuestion -= OnGetQuestion;
+	}
+
+	private void OnDisable()
+	{
+		UnsubscribeEvents();
+	}
+
 	#endregion
 
 	public bool IsLoaded()
@@ -77,5 +105,10 @@ public class QuestionsTableManager
 	{
 		return _rowList.FindAll(x => x.question == find);
 	}
+
+	private string OnGetQuestion(int id)
+    {
+		return GetAt(id).question;
+    }
 
 }

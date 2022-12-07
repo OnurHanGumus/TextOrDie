@@ -15,6 +15,7 @@ public class LevelPanelController : MonoBehaviour
     #endregion
     #region SerializeField Variables
     [SerializeField] private TextMeshProUGUI scoreTxt;
+    [SerializeField] private TextMeshProUGUI questionText;
     #endregion
     #region Private Variables
 
@@ -28,7 +29,10 @@ public class LevelPanelController : MonoBehaviour
     private void Init()
     {
 
-
+    }
+    private void Start()
+    {
+        AskQuestion();
     }
     public void OnScoreUpdateText(ScoreTypeEnums type, int score)
     {
@@ -41,5 +45,10 @@ public class LevelPanelController : MonoBehaviour
     public void OnRestartLevel()
     {
         scoreTxt.text = 0.ToString();
+    }
+
+    public void AskQuestion()
+    {
+        questionText.text = QuestionSignals.Instance.onGetQuestion(0);
     }
 }
