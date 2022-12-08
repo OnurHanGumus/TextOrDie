@@ -15,6 +15,7 @@ public class LevelPanelController : MonoBehaviour
     #endregion
     #region SerializeField Variables
     [SerializeField] private TextMeshProUGUI scoreTxt;
+    [SerializeField] private TextMeshProUGUI charCounterText;
     [SerializeField] private TextMeshProUGUI questionText, answerText;
     [SerializeField] private int questionId = 0;
     [SerializeField] private List<string> enemyAnswerList;
@@ -44,6 +45,11 @@ public class LevelPanelController : MonoBehaviour
         QuestionSignals.Instance.onPlayerHitEnterButton?.Invoke(answerText.text);
     }
 
+    public void IncreaseCharCounterText()
+    {
+        charCounterText.text = answerText.text.Length.ToString();
+    }
+
     public void OnScoreUpdateText(ScoreTypeEnums type, int score)
     {
         if (type.Equals(ScoreTypeEnums.Score))
@@ -61,7 +67,7 @@ public class LevelPanelController : MonoBehaviour
     {
         enemyAnswerList.Add(enemyAnswer);
     }
-    public void OnShowAnswerToPanel()
+    public void OnShowAnswerInPanel()
     {
         enemyAnswerPanel.transform.localPosition = Vector3.zero;
         for (int i = 0; i < enemyAnswerList.Count; i++)

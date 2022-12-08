@@ -39,7 +39,7 @@ namespace Managers
             ScoreSignals.Instance.onHighScoreChanged += highScorePanelController.OnUpdateText;
             QuestionSignals.Instance.onAskQuestion += levelPanelController.OnAskQuestion;
             QuestionSignals.Instance.onSendAnswerToPanel += levelPanelController.OnSendAnswerToPanel;
-            QuestionSignals.Instance.onShowAnswerPanel += levelPanelController.OnShowAnswerToPanel;
+            QuestionSignals.Instance.onShowAnswerPanel += levelPanelController.OnShowAnswerInPanel;
         }
 
         private void UnsubscribeEvents()
@@ -54,7 +54,7 @@ namespace Managers
             ScoreSignals.Instance.onHighScoreChanged -= highScorePanelController.OnUpdateText;
             QuestionSignals.Instance.onAskQuestion -= levelPanelController.OnAskQuestion;
             QuestionSignals.Instance.onSendAnswerToPanel -= levelPanelController.OnSendAnswerToPanel;
-            QuestionSignals.Instance.onShowAnswerPanel -= levelPanelController.OnShowAnswerToPanel;
+            QuestionSignals.Instance.onShowAnswerPanel -= levelPanelController.OnShowAnswerInPanel;
         }
 
         private void OnDisable()

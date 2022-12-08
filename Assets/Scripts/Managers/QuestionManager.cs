@@ -13,6 +13,7 @@ public class QuestionManager : MonoBehaviour
 
 	#region SerializeField Variables
 	[SerializeField] private int questionId = 0;
+	[SerializeField] private Transform waterTransform;
 	#endregion
 
 	#region Private Variables
@@ -31,12 +32,14 @@ public class QuestionManager : MonoBehaviour
 	private void SubscribeEvents()
 	{
         QuestionSignals.Instance.onGetQuestionId += OnGetQuestionId;
+		QuestionSignals.Instance.onPlayerHitEnterButton += OnShowAnswerInPanel;
     }
 
 	private void UnsubscribeEvents()
 	{
         QuestionSignals.Instance.onGetQuestionId -= OnGetQuestionId;
-    }
+		QuestionSignals.Instance.onPlayerHitEnterButton -= OnShowAnswerInPanel;
+	}
 
 	private void OnDisable()
 	{
@@ -52,6 +55,17 @@ public class QuestionManager : MonoBehaviour
 	public void AskQuestion()
 	{
 		QuestionSignals.Instance.onAskQuestion?.Invoke(questionId);
+	}
+
+	private void OnShowAnswerInPanel(string text)
+    {
+		StartCoroutine(WaterRising());
+    }
+	private IEnumerator WaterRising()
+    {
+		yield return new WaitForSeconds(1f);
+		waterTransform.position += new Vector3(0, 3, 0);
+
 	}
 
 	public int OnGetQuestionId()
