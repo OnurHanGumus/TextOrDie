@@ -33,6 +33,7 @@ MonoBehaviour:
     - Assembly-CSharp-firstpass
     - sc.stylizedwater2.runtime
     - sc.stylizedwater2.editor
+    - Cinemachine
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0
   autoUpdateReferences: 1
