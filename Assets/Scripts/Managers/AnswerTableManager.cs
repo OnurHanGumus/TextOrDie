@@ -131,7 +131,19 @@ public class AnswerTableManager : MonoBehaviour
     {
 		int questionId = QuestionSignals.Instance.onGetQuestionId();
 		List<Row> questionsAnswerList =  FindAll_question_id(questionId.ToString());
-		Debug.Log(Find_answer((typedValue).Remove(typedValue.Length - 1), questionsAnswerList));
-    }
+
+		bool isAnsweredTrue = Find_answer((typedValue).Remove(typedValue.Length - 1), questionsAnswerList);
+
+		if (isAnsweredTrue)
+        {
+			PlayerSignals.Instance.onPlayerAnsweredRight?.Invoke(typedValue.Length);
+			Debug.Log("player answered right");
+        }
+        else
+        {
+			PlayerSignals.Instance.onPlayerAnsweredWrong?.Invoke();
+			Debug.Log("player answered wrong");
+		}
+	}
 
 }

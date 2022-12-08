@@ -5,7 +5,7 @@ namespace Enums
     [Serializable]
     public enum PoolEnums
     {
-        Collectable,
+        Block,
         Particle,
     }
 }
