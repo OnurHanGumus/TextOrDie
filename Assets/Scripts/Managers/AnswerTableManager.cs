@@ -42,11 +42,13 @@ public class AnswerTableManager : MonoBehaviour
 	private void SubscribeEvents()
 	{
 		QuestionSignals.Instance.onPlayerHitEnterButton += OnComparison;
+		QuestionSignals.Instance.onGetRandomAnswer += OnGetRandomAnswer;
 	}
 
 	private void UnsubscribeEvents()
 	{
 		QuestionSignals.Instance.onPlayerHitEnterButton -= OnComparison;
+		QuestionSignals.Instance.onGetRandomAnswer -= OnGetRandomAnswer;
 
 	}
 
@@ -145,5 +147,12 @@ public class AnswerTableManager : MonoBehaviour
 			Debug.Log("player answered wrong");
 		}
 	}
+
+	public string OnGetRandomAnswer() //for enemies
+    {
+		int questionId = QuestionSignals.Instance.onGetQuestionId();
+		List<Row> questionsAnswerList = FindAll_question_id(questionId.ToString());
+		return questionsAnswerList[Random.Range(0, questionsAnswerList.Count - 1)].answer;
+    }
 
 }

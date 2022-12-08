@@ -10,6 +10,8 @@ namespace Signals
     {
         public Func<int,string> onGetQuestion = delegate { return ""; };
         public Func<int> onGetQuestionId = delegate { return 0; };
+        public Func<string> onGetRandomAnswer = delegate { return ""; };
+
         public UnityAction<string> onPlayerHitEnterButton = delegate { };
         public UnityAction<int> onAskQuestion = delegate { };
 

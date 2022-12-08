@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using Signals;
 using DG.Tweening;
 using Enums;
+using System;
 
-public class PlayerBlockCreateManager : MonoBehaviour
+public class EnemyBlockCreateManager : MonoBehaviour
 {
 
 	#region Self Variables
@@ -32,15 +33,18 @@ public class PlayerBlockCreateManager : MonoBehaviour
 
 	private void SubscribeEvents()
 	{
-		PlayerSignals.Instance.onPlayerAnsweredRight += OnPlayerAnsweredRight;
-    }
+		QuestionSignals.Instance.onPlayerHitEnterButton += OnPlayerHitEnterButton;
+
+	}
 
 	private void UnsubscribeEvents()
 	{
-		PlayerSignals.Instance.onPlayerAnsweredRight -= OnPlayerAnsweredRight;
+		QuestionSignals.Instance.onPlayerHitEnterButton -= OnPlayerHitEnterButton;
 	}
 
-	private void OnDisable()
+
+
+    private void OnDisable()
 	{
 		UnsubscribeEvents();
 	}
@@ -63,7 +67,7 @@ public class PlayerBlockCreateManager : MonoBehaviour
 		{
 			GameObject block = PoolSignals.Instance.onGetObject(PoolEnums.Block);
 			block.transform.localScale = Vector3.zero;
-			block.transform.position = new Vector3(0, blockIndeks++, 5);
+			block.transform.position = new Vector3(transform.position.x, blockIndeks++, 5);
 			block.SetActive(true);
 
 			transform.DOMoveY(blockIndeks - 0.5f, 0.2f);
@@ -73,10 +77,14 @@ public class PlayerBlockCreateManager : MonoBehaviour
 
 		}
 	}
-	private void OnPlayerAnsweredRight(int charCount)
-    {
-		StartCoroutine(CreateBlocks(charCount));
-    }
+
+
+	private void OnPlayerHitEnterButton(string arg0)
+	{
+		string randomAnswer = QuestionSignals.Instance.onGetRandomAnswer();
+		Debug.Log(randomAnswer);
+		StartCoroutine(CreateBlocks(randomAnswer.Length));
+	}
 
 
 
