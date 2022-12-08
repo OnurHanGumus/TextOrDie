@@ -37,6 +37,7 @@ namespace Managers
             CoreGameSignals.Instance.onLevelSuccessful += OnLevelSuccessful;
             CoreGameSignals.Instance.onRestartLevel += levelPanelController.OnRestartLevel;
             ScoreSignals.Instance.onHighScoreChanged += highScorePanelController.OnUpdateText;
+            QuestionSignals.Instance.onAskQuestion += levelPanelController.OnAskQuestion;
         }
 
         private void UnsubscribeEvents()
@@ -49,6 +50,7 @@ namespace Managers
             CoreGameSignals.Instance.onLevelSuccessful -= OnLevelSuccessful;
             CoreGameSignals.Instance.onRestartLevel -= levelPanelController.OnRestartLevel;
             ScoreSignals.Instance.onHighScoreChanged -= highScorePanelController.OnUpdateText;
+            QuestionSignals.Instance.onAskQuestion -= levelPanelController.OnAskQuestion;
         }
 
         private void OnDisable()

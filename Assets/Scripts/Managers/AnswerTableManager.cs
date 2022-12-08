@@ -112,9 +112,9 @@ public class AnswerTableManager : MonoBehaviour
 	{
 		return _rowList.FindAll(x => x.id == find);
 	}
-	public bool Find_answer(string find)
+	public bool Find_answer(string find, List<Row> dataSet)
 	{		
-		foreach (var i in _rowList)
+		foreach (var i in dataSet)
         {
             if (find.ToString().Equals(i.answer.ToString()))
             {
@@ -129,7 +129,9 @@ public class AnswerTableManager : MonoBehaviour
 	}
 	public void OnComparison(string typedValue)
     {
-		Debug.Log(Find_answer((typedValue).Remove(typedValue.Length - 1)));
+		int questionId = QuestionSignals.Instance.onGetQuestionId();
+		List<Row> questionsAnswerList =  FindAll_question_id(questionId.ToString());
+		Debug.Log(Find_answer((typedValue).Remove(typedValue.Length - 1), questionsAnswerList));
     }
 
 }

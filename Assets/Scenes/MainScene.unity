@@ -1009,6 +1009,7 @@ GameObject:
   - component: {fileID: 159131480}
   - component: {fileID: 159131479}
   - component: {fileID: 159131481}
+  - component: {fileID: 159131482}
   m_Layer: 0
   m_Name: QuestionTableManager
   m_TagString: Untagged
@@ -1056,6 +1057,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   answerFile: {fileID: 4900000, guid: e3375e23c2e9f174ba1e1564566b2577, type: 3}
+--- !u!114 &159131482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159131478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dae15950ab7b5fb418ee3e166df9fdf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questionId: 0
 --- !u!1 &164366847
 GameObject:
   m_ObjectHideFlags: 0
@@ -2778,7 +2792,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -57.7, y: 0}
+  m_AnchoredPosition: {x: -57.69995, y: 0}
   m_SizeDelta: {x: 22, y: 22}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &762723327
@@ -5116,6 +5130,7 @@ MonoBehaviour:
   scoreTxt: {fileID: 1043350963}
   questionText: {fileID: 1076667950}
   answerText: {fileID: 1639886838}
+  questionId: 0
 --- !u!1 &1639886836
 GameObject:
   m_ObjectHideFlags: 0

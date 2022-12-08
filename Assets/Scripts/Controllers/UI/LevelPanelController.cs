@@ -16,6 +16,8 @@ public class LevelPanelController : MonoBehaviour
     #region SerializeField Variables
     [SerializeField] private TextMeshProUGUI scoreTxt;
     [SerializeField] private TextMeshProUGUI questionText, answerText;
+    [SerializeField] private int questionId = 0;
+
     #endregion
     #region Private Variables
 
@@ -32,8 +34,13 @@ public class LevelPanelController : MonoBehaviour
     }
     private void Start()
     {
-        AskQuestion();
     }
+    
+    public void PlayerHitEnterButton()
+    {
+        QuestionSignals.Instance.onPlayerHitEnterButton?.Invoke(answerText.text);
+    }
+
     public void OnScoreUpdateText(ScoreTypeEnums type, int score)
     {
         if (type.Equals(ScoreTypeEnums.Score))
@@ -42,18 +49,12 @@ public class LevelPanelController : MonoBehaviour
         }
     }
 
+    public void OnAskQuestion(int id)
+    {
+        questionText.text = QuestionSignals.Instance.onGetQuestion(id);
+    }
     public void OnRestartLevel()
     {
         scoreTxt.text = 0.ToString();
-    }
-
-    public void AskQuestion()
-    {
-        questionText.text = QuestionSignals.Instance.onGetQuestion(0);
-    }
-
-    public void PlayerHitEnterButton()
-    {
-        QuestionSignals.Instance.onPlayerHitEnterButton?.Invoke(answerText.text);
     }
 }
