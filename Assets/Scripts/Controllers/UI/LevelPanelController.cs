@@ -17,6 +17,9 @@ public class LevelPanelController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreTxt;
     [SerializeField] private TextMeshProUGUI questionText, answerText;
     [SerializeField] private int questionId = 0;
+    [SerializeField] private List<string> enemyAnswerList;
+    [SerializeField] private Transform enemyAnswerPanel;
+    [SerializeField] private List<TextMeshProUGUI> enemyAnswerTextList;
 
     #endregion
     #region Private Variables
@@ -52,6 +55,20 @@ public class LevelPanelController : MonoBehaviour
     public void OnAskQuestion(int id)
     {
         questionText.text = QuestionSignals.Instance.onGetQuestion(id);
+        enemyAnswerList.Clear();
+    }
+    public void OnSendAnswerToPanel(string enemyAnswer)
+    {
+        enemyAnswerList.Add(enemyAnswer);
+    }
+    public void OnShowAnswerToPanel()
+    {
+        enemyAnswerPanel.transform.localPosition = Vector3.zero;
+        for (int i = 0; i < enemyAnswerList.Count; i++)
+        {
+            enemyAnswerTextList[i].text = enemyAnswerList[i];
+            enemyAnswerTextList[i].transform.parent.gameObject.SetActive(true);
+        }
     }
     public void OnRestartLevel()
     {

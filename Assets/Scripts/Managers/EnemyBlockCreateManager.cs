@@ -15,6 +15,7 @@ public class EnemyBlockCreateManager : MonoBehaviour
 
 	#region SerializeField Variables
 	[SerializeField] private int blockIndeks = 1, initializeBlockCounts = 5;
+	[SerializeField] private int enemyId = 0;
 
 	#endregion
 
@@ -83,8 +84,10 @@ public class EnemyBlockCreateManager : MonoBehaviour
 	{
 		string randomAnswer = QuestionSignals.Instance.onGetRandomAnswer();
 		Debug.Log(randomAnswer);
-		StartCoroutine(CreateBlocks(randomAnswer.Length));
-	}
+		QuestionSignals.Instance.onSendAnswerToPanel?.Invoke(randomAnswer);
+		QuestionSignals.Instance.onShowAnswerPanel?.Invoke();
+        StartCoroutine(CreateBlocks(randomAnswer.Length));
+    }
 
 
 

@@ -14,6 +14,8 @@ namespace Signals
 
         public UnityAction<string> onPlayerHitEnterButton = delegate { };
         public UnityAction<int> onAskQuestion = delegate { };
+        public UnityAction<string> onSendAnswerToPanel = delegate { };
+        public UnityAction onShowAnswerPanel = delegate { };
 
     }
 }
