@@ -69,7 +69,9 @@ public class QuestionManager : MonoBehaviour
 		PlayerSignals.Instance.onWaterRising?.Invoke();
 		waterTransform.DOMoveY(waterTransform.position.y + 3, 1.5f).SetDelay(0.5f).OnComplete(() =>
 			{
+				questionId++;
 				AskQuestion();
+
 			}
 		);
 
