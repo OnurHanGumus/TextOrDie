@@ -150,6 +150,7 @@ Material:
     - _OcclusionStrength: 1
     - _PlanarReflectionsEnabled: 0
     - _PlanarReflectionsParams: 0
+    - _PointSpotLightReflectionExp: 64
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _ReflectionBlur: 0
@@ -215,6 +216,7 @@ Material:
     - _WaterShallowColor: {r: 0, g: 0.9394503, b: 1, a: 1}
     - _WaveDirection: {r: -1, g: -1, b: -1, a: -1}
     - _WaveFadeDistance: {r: 26.666674, g: 143.33331, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!114 &6498140463000427223
 MonoBehaviour:
   m_ObjectHideFlags: 11

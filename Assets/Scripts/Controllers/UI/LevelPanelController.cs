@@ -6,7 +6,9 @@ using UnityEngine;
 using TMPro;
 using System;
 using Data.UnityObject;
+using Data.ValueObject;
 using DG.Tweening;
+using Managers;
 
 public class LevelPanelController : MonoBehaviour
 {
@@ -22,11 +24,11 @@ public class LevelPanelController : MonoBehaviour
     [SerializeField] private Transform enemyAnswerPanel;
     [SerializeField] private List<TextMeshProUGUI> enemyAnswerTextList;
     [SerializeField] private Transform questionPanel, answerPanel;
+    [SerializeField] private UIManager manager;
 
     #endregion
     #region Private Variables
-
-
+    private UIData _data;
     #endregion
     #endregion
     private void Awake()
@@ -35,8 +37,9 @@ public class LevelPanelController : MonoBehaviour
     }
     private void Init()
     {
-
+        _data = manager.GetData();
     }
+    
     private void Start()
     {
     }
@@ -53,14 +56,14 @@ public class LevelPanelController : MonoBehaviour
 
     public void ShowQuestionAnswerPanel()
     {
-        questionPanel.transform.DOLocalMoveY(668f, 0.5f);
-        answerPanel.transform.DOLocalMoveX(0, 0.5f);
+        questionPanel.transform.DOLocalMoveY(_data.QuestionPanelScreenPosY, _data.UIAnimationDelay);
+        answerPanel.transform.DOLocalMoveX(_data.AnswerPanelScreenPosX, _data.UIAnimationDelay);
     }
     private void CloseQuestionAnswerPanel()
     {
-        questionPanel.transform.DOLocalMoveY(1250f, 0.5f);
-        answerPanel.transform.DOLocalMoveX(-1100f, 0.5f);
-        enemyAnswerPanel.DOLocalMoveX(1100f, 0.5f);
+        questionPanel.transform.DOLocalMoveY(_data.QuestionPanelClosePosY, _data.UIAnimationDelay);
+        answerPanel.transform.DOLocalMoveX(_data.AnswerPanelClosePosX, _data.UIAnimationDelay);
+        enemyAnswerPanel.DOLocalMoveX(_data.EnemyAnswerPanelClosePosX, _data.UIAnimationDelay);
     }
 
     private void SelectLongestWord()
@@ -77,7 +80,7 @@ public class LevelPanelController : MonoBehaviour
         {
             longestWordCharCount = answerText.text.Length;
         }
-        PlayerSignals.Instance.onBlockRisingEnd?.Invoke(longestWordCharCount * 0.5f);
+        PlayerSignals.Instance.onBlockRisingEnd?.Invoke(longestWordCharCount * _data.UIAnimationDelay);
     }
 
     public void OnScoreUpdateText(ScoreTypeEnums type, int score)
@@ -100,7 +103,7 @@ public class LevelPanelController : MonoBehaviour
     }
     public void OnShowEnemyAnswerInPanel()
     {
-        enemyAnswerPanel.DOLocalMoveX(0f, 0.5f);
+        enemyAnswerPanel.DOLocalMoveX(_data.EnemyAnswerPanelScreenPosX, _data.UIAnimationDelay);
         for (int i = 0; i < enemyAnswerList.Count; i++)
         {
             enemyAnswerTextList[i].text = enemyAnswerList[i];

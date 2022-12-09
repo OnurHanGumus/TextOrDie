@@ -448,7 +448,7 @@ GameObject:
   - component: {fileID: 1647841581512657563}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -512,6 +512,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockIndeks: 1
   initializeBlockCounts: 5
+  enemyId: 0
 --- !u!1 &5159332016781385769
 GameObject:
   m_ObjectHideFlags: 0

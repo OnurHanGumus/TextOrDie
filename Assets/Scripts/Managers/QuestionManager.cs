@@ -14,6 +14,7 @@ public class QuestionManager : MonoBehaviour
 	#region SerializeField Variables
 	[SerializeField] private int questionId = 0;
 	[SerializeField] private Transform waterTransform;
+	[SerializeField] private bool isPlayerOnWater = false;
 	#endregion
 
 	#region Private Variables
@@ -67,15 +68,45 @@ public class QuestionManager : MonoBehaviour
     {
 		yield return new WaitForSeconds(delay);
 		PlayerSignals.Instance.onWaterRising?.Invoke();
-		waterTransform.DOMoveY(waterTransform.position.y + 3, 1.5f).SetDelay(0.5f).OnComplete(() =>
-			{
-				questionId++;
-				AskQuestion();
+		//waterTransform.DOMoveY(waterTransform.position.y + 3, 1.5f).SetDelay(0.5f).OnComplete(() =>
+		//	{
 
-			}
-		);
+		//		questionId++;
 
-	}
+		//		if (questionId == 2)
+		//		{
+		//			questionId = 0;
+		//		}
+
+		//		if (isPlayerOnWater)
+		//		{
+		//			//PlayeronWater
+		//		}
+		//		else
+		//		{
+		//			AskQuestion();
+		//		}
+		//	}
+		//); ;
+		waterTransform.DOMoveY(waterTransform.position.y + 3, 1.5f);
+		yield return new WaitForSeconds(2f);
+        questionId++;
+
+        if (questionId == 2)
+        {
+            questionId = 0;
+        }
+
+        if (isPlayerOnWater)
+        {
+            //PlayeronWater
+        }
+        else
+        {
+            AskQuestion();
+        }
+
+    }
 
 	public int OnGetQuestionId()
 	{
