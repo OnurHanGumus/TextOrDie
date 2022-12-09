@@ -19,7 +19,6 @@ public class SharkManager : MonoBehaviour
 
 	#region Private Variables
 	private Tween _patrollingTween;
-	private float _waterPosY = 0f;
 	#endregion
 	#endregion
 	private void Awake()
@@ -69,7 +68,7 @@ public class SharkManager : MonoBehaviour
 	{
 		_patrollingTween = transform.DOPath(new Vector3[2]
 		{
-			new Vector3(-20, _waterPosY, 10), new Vector3(20, _waterPosY, 10),
+			new Vector3(-20, transform.parent.localPosition.y, 10), new Vector3(20, transform.parent.localPosition.y, 10),
 		}, 5f).SetSpeedBased(true).OnComplete(() =>
 			{
                 transform.eulerAngles += new Vector3(0, -90, 0);
@@ -84,7 +83,6 @@ public class SharkManager : MonoBehaviour
 	private void OnWaterRisig()
     {
 		_patrollingTween.Kill();
-		_waterPosY += 3;
 	}
 
 	private void OnAskQuestion(int value)
