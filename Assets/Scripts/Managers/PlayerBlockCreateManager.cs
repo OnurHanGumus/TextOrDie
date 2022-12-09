@@ -59,6 +59,7 @@ public class PlayerBlockCreateManager : MonoBehaviour
 
 	private IEnumerator CreateBlocks(int charCount)
     {
+		yield return new WaitForSeconds(1f);
 		for (int i = 0; i < charCount; i++)
 		{
 			GameObject block = PoolSignals.Instance.onGetObject(PoolEnums.Block);

@@ -39,7 +39,9 @@ namespace Managers
             ScoreSignals.Instance.onHighScoreChanged += highScorePanelController.OnUpdateText;
             QuestionSignals.Instance.onAskQuestion += levelPanelController.OnAskQuestion;
             QuestionSignals.Instance.onSendAnswerToPanel += levelPanelController.OnSendAnswerToPanel;
-            QuestionSignals.Instance.onShowAnswerPanel += levelPanelController.OnShowAnswerInPanel;
+            QuestionSignals.Instance.onShowAnswerPanel += levelPanelController.OnShowEnemyAnswerInPanel;
+            PlayerSignals.Instance.onWaterRising += levelPanelController.OnWaterRising;
+            QuestionSignals.Instance.onPlayerHitEnterButton += levelPanelController.OnPlayerHitEnterButton;
         }
 
         private void UnsubscribeEvents()
@@ -54,7 +56,9 @@ namespace Managers
             ScoreSignals.Instance.onHighScoreChanged -= highScorePanelController.OnUpdateText;
             QuestionSignals.Instance.onAskQuestion -= levelPanelController.OnAskQuestion;
             QuestionSignals.Instance.onSendAnswerToPanel -= levelPanelController.OnSendAnswerToPanel;
-            QuestionSignals.Instance.onShowAnswerPanel -= levelPanelController.OnShowAnswerInPanel;
+            QuestionSignals.Instance.onShowAnswerPanel -= levelPanelController.OnShowEnemyAnswerInPanel;
+            PlayerSignals.Instance.onWaterRising -= levelPanelController.OnWaterRising;
+            QuestionSignals.Instance.onPlayerHitEnterButton -= levelPanelController.OnPlayerHitEnterButton;
         }
 
         private void OnDisable()
