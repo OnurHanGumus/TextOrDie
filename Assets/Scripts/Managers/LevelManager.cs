@@ -41,6 +41,7 @@ namespace Managers
         private void Awake()
         {
             Init();
+            InitializeLevel();
         }
 
         private void Init()
@@ -123,9 +124,16 @@ namespace Managers
 
         private void OnInitializeLevel()
         {
+            InitializeLevel();
+            InitializeOtherPlayers();
+        }
+
+        private void InitializeLevel()
+        {
             UnityEngine.Object[] Levels = Resources.LoadAll("Levels");
             int newLevelId = _levelID % Levels.Length;
             levelLoader.InitializeLevel((GameObject)Levels[newLevelId], levelHolder.transform);
+
         }
 
         private void OnClearActiveLevel()
@@ -137,6 +145,9 @@ namespace Managers
         {
             for (int i = 0; i < _data.OtherPlayerPositions.Length; i++)
             {
+                GameObject block = PoolSignals.Instance.onGetObject(PoolEnums.Block);
+                block.transform.position = new Vector3(_data.OtherPlayerPositions[i].x, _data.OtherPlayerPositions[i].y - 0.5f, _data.OtherPlayerPositions[i].z);
+                block.SetActive(true);
                 GameObject otherPlayer = PoolSignals.Instance.onGetObject(PoolEnums.Enemy);
                 otherPlayer.transform.position = _data.OtherPlayerPositions[i];
                 otherPlayer.SetActive(true);

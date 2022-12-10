@@ -36,6 +36,7 @@ public class EnemyBlockCreateManager : MonoBehaviour
 	{
 		QuestionSignals.Instance.onPlayerHitEnterButton += OnPlayerHitEnterButton;
 		CoreGameSignals.Instance.onPlay += OnPlay;
+		CoreGameSignals.Instance.onRestartLevel += OnRestartLevel;
 
 	}
 
@@ -43,6 +44,7 @@ public class EnemyBlockCreateManager : MonoBehaviour
 	{
 		QuestionSignals.Instance.onPlayerHitEnterButton -= OnPlayerHitEnterButton;
 		CoreGameSignals.Instance.onPlay -= OnPlay;
+		CoreGameSignals.Instance.onRestartLevel -= OnRestartLevel;
 	}
 
 
@@ -89,12 +91,15 @@ public class EnemyBlockCreateManager : MonoBehaviour
 	private void OnPlayerHitEnterButton(string arg0)
 	{
 		string randomAnswer = QuestionSignals.Instance.onGetRandomAnswer();
-		Debug.Log(randomAnswer);
 		QuestionSignals.Instance.onSendAnswerToPanel?.Invoke(randomAnswer);
 		QuestionSignals.Instance.onShowAnswerPanel?.Invoke();
         StartCoroutine(CreateBlocks(randomAnswer.Length));
     }
 
+	private void OnRestartLevel()
+    {
+		blockIndeks = 1;
 
+	}
 
 }

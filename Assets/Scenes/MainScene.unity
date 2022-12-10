@@ -3522,11 +3522,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockPrefab: {fileID: 2203849640668246213, guid: 91a03815fe9c2fe459cbe195967dd1fb, type: 3}
-  enemyPrefab: {fileID: 3241016619953610322, guid: becbd3707693f884290fd0dc84859ff1, type: 3}
+  enemyPrefab: {fileID: 4926313946864681842, guid: c873c81f2c628474eb657d2b583b0771, type: 3}
   particlePrefab: {fileID: 0}
   amountBlocks: 200
   amountParticle: 5
-  amountEnemies: 5
+  amountEnemies: 10
 --- !u!1 &744399279
 GameObject:
   m_ObjectHideFlags: 0
@@ -7856,7 +7856,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1801279784
 Transform:
   m_ObjectHideFlags: 0

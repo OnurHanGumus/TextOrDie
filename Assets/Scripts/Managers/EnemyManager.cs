@@ -2,9 +2,10 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Signals;
+using Enums;
 using DG.Tweening;
 
-public class WaterManager : MonoBehaviour
+public class EnemyManager : MonoBehaviour
 {
 
 	#region Self Variables
@@ -16,10 +17,12 @@ public class WaterManager : MonoBehaviour
 	#endregion
 
 	#region Private Variables
+
 	#endregion
 	#endregion
 	private void Awake()
 	{
+
 	}
 	#region Event Subscriptions
 
@@ -30,13 +33,14 @@ public class WaterManager : MonoBehaviour
 
 	private void SubscribeEvents()
 	{
-		PlayerSignals.Instance.onWaterRising += OnWaterRising;
+		CoreGameSignals.Instance.onPlay += OnPlay;
+		CoreGameSignals.Instance.onRestartLevel += OnRestartLevel;
     }
 
 	private void UnsubscribeEvents()
 	{
-		PlayerSignals.Instance.onWaterRising -= OnWaterRising;
-
+		CoreGameSignals.Instance.onPlay -= OnPlay;
+		CoreGameSignals.Instance.onRestartLevel -= OnRestartLevel;
 	}
 
 	private void OnDisable()
@@ -45,17 +49,12 @@ public class WaterManager : MonoBehaviour
 	}
 
     #endregion
-
-    private void Start()
+    private void OnPlay()
     {
-	}
-
-	private void OnWaterRising()
+		gameObject.SetActive(true);
+    }
+    private void OnRestartLevel()
     {
-		transform.DOMoveY(transform.position.y + 8, 1.5f);
 
-	}
-
-
-
+    }
 }

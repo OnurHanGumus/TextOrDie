@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Signals;
 using System;
+using Data.UnityObject;
+using Data.ValueObject;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -18,6 +20,7 @@ public class PlayerManager : MonoBehaviour
 	#endregion
 
 	#region Private Variables
+	private PlayerData _data;
 	#endregion
 	#endregion
 	private void Awake()
@@ -27,8 +30,10 @@ public class PlayerManager : MonoBehaviour
 
     private void Init()
     {
-
+		_data = GetData();
     }
+
+	private PlayerData GetData() => Resources.Load<CD_Player>("Data/CD_Player").Data;
     #region Event Subscriptions
 
     private void OnEnable()
@@ -39,11 +44,13 @@ public class PlayerManager : MonoBehaviour
 	private void SubscribeEvents()
 	{
 		PlayerSignals.Instance.onPlayerAnsweredRight += OnPlayerAnsweredRight;
+		CoreGameSignals.Instance.onRestartLevel += OnRestartLevel;
     }
 
 	private void UnsubscribeEvents()
 	{
 		PlayerSignals.Instance.onPlayerAnsweredRight -= OnPlayerAnsweredRight;
+		CoreGameSignals.Instance.onRestartLevel -= OnRestartLevel;
 	}
 
 	private void OnDisable()
@@ -66,6 +73,10 @@ public class PlayerManager : MonoBehaviour
 	private void OnPlayerAnsweredRight(int charCount)
     {
 		//transform.position = new Vector3(0, playerInitialPosY + charCount, 5);
+    }
+	private void OnRestartLevel()
+    {
+		transform.position = _data.InitialPos;
     }
 
 

@@ -34,12 +34,14 @@ public class PlayerBlockCreateManager : MonoBehaviour
 	{
 		PlayerSignals.Instance.onPlayerAnsweredRight += OnPlayerAnsweredRight;
 		CoreGameSignals.Instance.onPlay += OnPlay;
+		CoreGameSignals.Instance.onRestartLevel += OnRestartLevel;
     }
 
 	private void UnsubscribeEvents()
 	{
 		PlayerSignals.Instance.onPlayerAnsweredRight -= OnPlayerAnsweredRight;
 		CoreGameSignals.Instance.onPlay -= OnPlay;
+		CoreGameSignals.Instance.onRestartLevel -= OnRestartLevel;
 	}
 
 	private void OnDisable()
@@ -86,6 +88,9 @@ public class PlayerBlockCreateManager : MonoBehaviour
 		StartCoroutine(CreateBlocks(charCount));
     }
 
-
+	private void OnRestartLevel()
+    {
+		blockIndeks = 1;
+    }
 
 }

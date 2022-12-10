@@ -81,27 +81,7 @@ public class QuestionManager : MonoBehaviour
     {
 		yield return new WaitForSeconds(delay);
 		PlayerSignals.Instance.onWaterRising?.Invoke();
-		//waterTransform.DOMoveY(waterTransform.position.y + 3, 1.5f).SetDelay(0.5f).OnComplete(() =>
-		//	{
 
-		//		questionId++;
-
-		//		if (questionId == 2)
-		//		{
-		//			questionId = 0;
-		//		}
-
-		//		if (isPlayerOnWater)
-		//		{
-		//			//PlayeronWater
-		//		}
-		//		else
-		//		{
-		//			AskQuestion();
-		//		}
-		//	}
-		//); ;
-		waterTransform.DOMoveY(waterTransform.position.y + 8, 1.5f);
 		yield return new WaitForSeconds(2f);
         questionId++;
 
