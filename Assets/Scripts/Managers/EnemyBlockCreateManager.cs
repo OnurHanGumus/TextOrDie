@@ -30,6 +30,8 @@ public class EnemyBlockCreateManager : MonoBehaviour
 	private void OnEnable()
 	{
 		SubscribeEvents();
+		InitializeBlocks();
+
 	}
 
 	private void SubscribeEvents()
@@ -58,6 +60,7 @@ public class EnemyBlockCreateManager : MonoBehaviour
 
 	private void Start()
 	{
+
 	}
 
 	private void InitializeBlocks()

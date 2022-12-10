@@ -13,7 +13,6 @@ public class QuestionManager : MonoBehaviour
 
 	#region SerializeField Variables
 	[SerializeField] private int questionId = 0;
-	[SerializeField] private Transform waterTransform;
 	[SerializeField] private bool isPlayerOnWater = false;
 	#endregion
 
@@ -82,7 +81,7 @@ public class QuestionManager : MonoBehaviour
 	private IEnumerator WaterRising(float delay)
     {
 		yield return new WaitForSeconds(delay);
-		LevelSignals.Instance.onWaterRising?.Invoke(waterTransform.position.y + 8);
+		LevelSignals.Instance.onWaterRising?.Invoke();
 
 		yield return new WaitForSeconds(2f);
         questionId++;

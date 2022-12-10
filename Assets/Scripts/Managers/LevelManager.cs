@@ -52,7 +52,7 @@ namespace Managers
 
         private void Start()
         {
-            InitializeOtherPlayers();
+            
         }
 
         private int GetActiveLevel()
@@ -71,11 +71,12 @@ namespace Managers
 
         private void SubscribeEvents()
         {
-            CoreGameSignals.Instance.onLevelInitialize += OnInitializeLevel;
+            CoreGameSignals.Instance.onPlay += OnPlay;
             CoreGameSignals.Instance.onClearActiveLevel += OnClearActiveLevel;
             CoreGameSignals.Instance.onNextLevel += OnNextLevel;
             CoreGameSignals.Instance.onRestartLevel += OnRestartLevel;
             CoreGameSignals.Instance.onGetLevelID += OnGetLevelID;
+            CoreGameSignals.Instance.onLevelInitialize += OnInitializeLevel;
 
         }
 
@@ -83,11 +84,12 @@ namespace Managers
 
         private void UnsubscribeEvents()
         {
-            CoreGameSignals.Instance.onLevelInitialize -= OnInitializeLevel;
+            CoreGameSignals.Instance.onPlay -= OnPlay;
             CoreGameSignals.Instance.onClearActiveLevel -= OnClearActiveLevel;
             CoreGameSignals.Instance.onNextLevel -= OnNextLevel;
             CoreGameSignals.Instance.onRestartLevel -= OnRestartLevel;
             CoreGameSignals.Instance.onGetLevelID -= OnGetLevelID;
+            CoreGameSignals.Instance.onLevelInitialize -= OnInitializeLevel;
 
         }
 
@@ -122,12 +124,14 @@ namespace Managers
         }
 
 
+        private void OnPlay()
+        {
+            InitializeOtherPlayers();
+        }
         private void OnInitializeLevel()
         {
             InitializeLevel();
-            InitializeOtherPlayers();
         }
-
         private void InitializeLevel()
         {
             UnityEngine.Object[] Levels = Resources.LoadAll("Levels");

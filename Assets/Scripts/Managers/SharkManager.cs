@@ -22,7 +22,6 @@ public class SharkManager : MonoBehaviour
 	private Tween _patrollingTween;
 	private bool _isOnHunt = false;
 	private bool _isBusy = false;
-	private float _waterLevel = 0;
 	#endregion
 	#endregion
 	private void Awake()
@@ -76,10 +75,9 @@ public class SharkManager : MonoBehaviour
     {
 	}
 
-	private void OnWaterRisig(float value)
+	private void OnWaterRisig()
     {
 		_patrollingTween.Kill();
-		_waterLevel = value;
 	}
 
 	private void OnAskQuestion(int value)
