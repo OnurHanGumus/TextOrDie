@@ -33,11 +33,13 @@ public class PlayerBlockCreateManager : MonoBehaviour
 	private void SubscribeEvents()
 	{
 		PlayerSignals.Instance.onPlayerAnsweredRight += OnPlayerAnsweredRight;
+		CoreGameSignals.Instance.onPlay += OnPlay;
     }
 
 	private void UnsubscribeEvents()
 	{
 		PlayerSignals.Instance.onPlayerAnsweredRight -= OnPlayerAnsweredRight;
+		CoreGameSignals.Instance.onPlay -= OnPlay;
 	}
 
 	private void OnDisable()
@@ -49,7 +51,6 @@ public class PlayerBlockCreateManager : MonoBehaviour
 
 	private void Start()
 	{
-		InitializeBlocks();
 	}
 
 	private void InitializeBlocks()
@@ -73,6 +74,12 @@ public class PlayerBlockCreateManager : MonoBehaviour
 			yield return new WaitForSeconds(0.2f);
 
 		}
+	}
+
+	private void OnPlay()
+    {
+		InitializeBlocks();
+
 	}
 	private void OnPlayerAnsweredRight(int charCount)
     {

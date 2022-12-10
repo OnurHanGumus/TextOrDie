@@ -35,17 +35,19 @@ public class EnemyBlockCreateManager : MonoBehaviour
 	private void SubscribeEvents()
 	{
 		QuestionSignals.Instance.onPlayerHitEnterButton += OnPlayerHitEnterButton;
+		CoreGameSignals.Instance.onPlay += OnPlay;
 
 	}
 
 	private void UnsubscribeEvents()
 	{
 		QuestionSignals.Instance.onPlayerHitEnterButton -= OnPlayerHitEnterButton;
+		CoreGameSignals.Instance.onPlay -= OnPlay;
 	}
 
 
 
-    private void OnDisable()
+	private void OnDisable()
 	{
 		UnsubscribeEvents();
 	}
@@ -54,7 +56,6 @@ public class EnemyBlockCreateManager : MonoBehaviour
 
 	private void Start()
 	{
-		InitializeBlocks();
 	}
 
 	private void InitializeBlocks()
@@ -79,7 +80,11 @@ public class EnemyBlockCreateManager : MonoBehaviour
 
 		}
 	}
+	private void OnPlay()
+	{
+		InitializeBlocks();
 
+	}
 
 	private void OnPlayerHitEnterButton(string arg0)
 	{

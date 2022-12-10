@@ -32,6 +32,7 @@ public class QuestionManager : MonoBehaviour
 
 	private void SubscribeEvents()
 	{
+		CoreGameSignals.Instance.onPlay += OnPlay;
         QuestionSignals.Instance.onGetQuestionId += OnGetQuestionId;
 		PlayerSignals.Instance.onBlockRisingEnd += OnBlockRisingEnd;
 		LevelSignals.Instance.onPlayerInWater += OnPlayerInWater;
@@ -40,6 +41,7 @@ public class QuestionManager : MonoBehaviour
 
 	private void UnsubscribeEvents()
 	{
+		CoreGameSignals.Instance.onPlay -= OnPlay;
         QuestionSignals.Instance.onGetQuestionId -= OnGetQuestionId;
 		PlayerSignals.Instance.onBlockRisingEnd -= OnBlockRisingEnd;
 		LevelSignals.Instance.onPlayerInWater -= OnPlayerInWater;
@@ -55,9 +57,14 @@ public class QuestionManager : MonoBehaviour
 
     private void Start()
     {
+		
+	}
+
+    private void OnPlay()
+    {
 		AskQuestion();
 	}
-	public void AskQuestion()
+    public void AskQuestion()
 	{
 		isPlayerOnWater = false;
 		QuestionSignals.Instance.onAskQuestion?.Invoke(questionId);
