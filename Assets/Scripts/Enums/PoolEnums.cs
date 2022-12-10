@@ -7,5 +7,6 @@ namespace Enums
     {
         Block,
         Particle,
+        Enemy,
     }
 }

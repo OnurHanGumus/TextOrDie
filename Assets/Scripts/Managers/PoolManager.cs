@@ -19,6 +19,7 @@ public class PoolManager : MonoBehaviour
 
     [SerializeField] private int amountBlocks = 50;
     [SerializeField] private int amountParticle = 5;
+    [SerializeField] private int amountEnemies = 5;
 
 
 
@@ -36,6 +37,7 @@ public class PoolManager : MonoBehaviour
         _levelId = LevelSignals.Instance.onGetCurrentModdedLevel();
         poolDictionary = new Dictionary<PoolEnums, List<GameObject>>();
         InitializePool(PoolEnums.Block, blockPrefab, amountBlocks);
+        InitializePool(PoolEnums.Enemy, enemyPrefab, amountEnemies);
         //InitializePool(PoolEnums.Particle, particlePrefab, amountParticle);
     }
 
@@ -107,6 +109,7 @@ public class PoolManager : MonoBehaviour
     {
         //reset
         ResetPool(PoolEnums.Block);
+        ResetPool(PoolEnums.Enemy);
         //ResetPool(PoolEnums.Particle);
     }
 

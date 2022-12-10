@@ -31,6 +31,8 @@ namespace Managers
         #region Private Variables
 
         [ShowInInspector] private int _levelID;
+        private LevelData _data;
+
 
         #endregion
 
@@ -38,7 +40,18 @@ namespace Managers
 
         private void Awake()
         {
+            Init();
+        }
+
+        private void Init()
+        {
             _levelID = GetActiveLevel();
+            _data = GetData();
+        }
+
+        private void Start()
+        {
+            InitializeOtherPlayers();
         }
 
         private int GetActiveLevel()
@@ -47,7 +60,7 @@ namespace Managers
             return ES3.KeyExists("Level") ? ES3.Load<int>("Level") : 0;
         }
 
-
+        private LevelData GetData() => Resources.Load<CD_Level>("Data/CD_Level").Data;
         #region Event Subscription
 
         private void OnEnable()
@@ -84,10 +97,6 @@ namespace Managers
 
         #endregion
 
-        private void Start()
-        {
-            OnInitializeLevel();
-        }
 
         private void OnNextLevel()
         {
@@ -126,7 +135,12 @@ namespace Managers
 
         private void InitializeOtherPlayers()
         {
-
+            for (int i = 0; i < _data.OtherPlayerPositions.Length; i++)
+            {
+                GameObject otherPlayer = PoolSignals.Instance.onGetObject(PoolEnums.Enemy);
+                otherPlayer.transform.position = _data.OtherPlayerPositions[i];
+                otherPlayer.SetActive(true);
+            }
         }
     }
 }
