@@ -58,14 +58,13 @@ namespace Managers
         private void SubscribeEvents()
         {
             CoreGameSignals.Instance.onPlay += OnPlay;
-
+            CoreGameSignals.Instance.onRestartLevel += OnRestartLevel;
         }
 
         private void UnsubscribeEvents()
         {
             CoreGameSignals.Instance.onPlay -= OnPlay;
-
-
+            CoreGameSignals.Instance.onRestartLevel -= OnRestartLevel;
         }
 
         private void OnDisable()
@@ -101,6 +100,11 @@ namespace Managers
         private void OnPlay()
         {
             ChangeGameState(CameraStates.Game);
+        }
+        private void OnRestartLevel()
+        {
+            ChangeGameState(CameraStates.Start);
+
         }
 
     }
