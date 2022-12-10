@@ -50,7 +50,7 @@ public class WaterManager : MonoBehaviour
     {
 	}
 
-	private void OnWaterRising()
+	private void OnWaterRising(float value)
     {
 		transform.DOMoveY(transform.position.y + 8, 1.5f);
 

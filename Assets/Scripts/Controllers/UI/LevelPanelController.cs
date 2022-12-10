@@ -121,7 +121,7 @@ public class LevelPanelController : MonoBehaviour
         SelectLongestWord();
     }
 
-    public void OnWaterRising()
+    public void OnWaterRising(float value)
     {
         CloseQuestionAnswerPanel();
     }

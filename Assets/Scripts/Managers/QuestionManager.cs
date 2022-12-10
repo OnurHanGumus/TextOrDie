@@ -80,7 +80,7 @@ public class QuestionManager : MonoBehaviour
 	private IEnumerator WaterRising(float delay)
     {
 		yield return new WaitForSeconds(delay);
-		PlayerSignals.Instance.onWaterRising?.Invoke();
+		PlayerSignals.Instance.onWaterRising?.Invoke(waterTransform.position.y + 8);
 
 		yield return new WaitForSeconds(2f);
         questionId++;

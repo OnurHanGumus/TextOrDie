@@ -21,6 +21,7 @@ public class SharkManager : MonoBehaviour
 	private Tween _patrollingTween;
 	private bool _isOnHunt = false;
 	private bool _isBusy = false;
+	private float _waterLevel = 0;
 	#endregion
 	#endregion
 	private void Awake()
@@ -72,14 +73,14 @@ public class SharkManager : MonoBehaviour
     {
 	}
 
-	private void OnWaterRisig()
+	private void OnWaterRisig(float value)
     {
 		_patrollingTween.Kill();
+		_waterLevel = value;
 	}
 
 	private void OnAskQuestion(int value)
     {
-		Debug.Log("tetikledni");
 		Patrolling();
     }
 
@@ -87,6 +88,7 @@ public class SharkManager : MonoBehaviour
 
 	private void OnInteractedWithWater(Transform target)
     {
+		transform.position = new Vector3(transform.position.x, _waterLevel, transform.position.z);
         if (_isBusy)
         {
 			target.parent.gameObject.SetActive(false);
@@ -94,7 +96,7 @@ public class SharkManager : MonoBehaviour
         }
 		_isBusy = true;
 		_patrollingTween.Kill();
-		transform.DOMove(target.position, 5).SetSpeedBased(true).OnComplete(()=>
+		transform.DOMove(new Vector3(target.position.x, target.transform.position.y, target.transform.position.z), 5).SetSpeedBased(true).OnComplete(()=>
 		{
 			_isBusy = false;
 

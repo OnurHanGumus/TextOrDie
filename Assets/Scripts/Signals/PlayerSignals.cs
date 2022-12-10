@@ -11,7 +11,7 @@ namespace Signals
     {
         public UnityAction<int> onPlayerAnsweredRight = delegate { };
         public UnityAction onPlayerAnsweredWrong = delegate { };
-        public UnityAction onWaterRising = delegate { };
+        public UnityAction<float> onWaterRising = delegate { };
         public UnityAction<float> onBlockRisingEnd = delegate { };
         public UnityAction<Transform> onInteractedWithWater = delegate { };
     }
