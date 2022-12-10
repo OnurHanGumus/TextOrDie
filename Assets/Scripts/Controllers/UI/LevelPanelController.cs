@@ -63,7 +63,13 @@ public class LevelPanelController : MonoBehaviour
     {
         questionPanel.transform.DOLocalMoveY(_data.QuestionPanelClosePosY, _data.UIAnimationDelay);
         answerPanel.transform.DOLocalMoveX(_data.AnswerPanelClosePosX, _data.UIAnimationDelay);
-        enemyAnswerPanel.DOLocalMoveX(_data.EnemyAnswerPanelClosePosX, _data.UIAnimationDelay);
+        enemyAnswerPanel.DOLocalMoveX(_data.EnemyAnswerPanelClosePosX, _data.UIAnimationDelay).OnComplete(()=> 
+        {
+            foreach (var i in enemyAnswerTextList)
+            {
+                i.transform.parent.gameObject.SetActive(false);
+            }
+        });
     }
 
     private void SelectLongestWord()

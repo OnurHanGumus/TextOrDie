@@ -11,6 +11,7 @@ public class PoolManager : MonoBehaviour
     #region Serialized Variables
 
     [SerializeField] private GameObject blockPrefab;
+    [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private GameObject particlePrefab;
 
     [SerializeField] private Dictionary<PoolEnums, List<GameObject>> poolDictionary;
@@ -106,7 +107,7 @@ public class PoolManager : MonoBehaviour
     {
         //reset
         ResetPool(PoolEnums.Block);
-        ResetPool(PoolEnums.Particle);
+        //ResetPool(PoolEnums.Particle);
     }
 
     private void ResetPool(PoolEnums type)

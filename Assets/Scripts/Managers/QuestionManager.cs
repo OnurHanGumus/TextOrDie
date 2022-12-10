@@ -34,12 +34,16 @@ public class QuestionManager : MonoBehaviour
 	{
         QuestionSignals.Instance.onGetQuestionId += OnGetQuestionId;
 		PlayerSignals.Instance.onBlockRisingEnd += OnBlockRisingEnd;
+		LevelSignals.Instance.onPlayerInWater += OnPlayerInWater;
+		LevelSignals.Instance.onEnemyDie += OnEnemyDie;
     }
 
 	private void UnsubscribeEvents()
 	{
         QuestionSignals.Instance.onGetQuestionId -= OnGetQuestionId;
 		PlayerSignals.Instance.onBlockRisingEnd -= OnBlockRisingEnd;
+		LevelSignals.Instance.onPlayerInWater -= OnPlayerInWater;
+		LevelSignals.Instance.onEnemyDie -= OnEnemyDie;
 	}
 
 	private void OnDisable()
@@ -55,7 +59,9 @@ public class QuestionManager : MonoBehaviour
 	}
 	public void AskQuestion()
 	{
+		isPlayerOnWater = false;
 		QuestionSignals.Instance.onAskQuestion?.Invoke(questionId);
+
 	}
 
 
@@ -88,7 +94,7 @@ public class QuestionManager : MonoBehaviour
 		//		}
 		//	}
 		//); ;
-		waterTransform.DOMoveY(waterTransform.position.y + 3, 1.5f);
+		waterTransform.DOMoveY(waterTransform.position.y + 8, 1.5f);
 		yield return new WaitForSeconds(2f);
         questionId++;
 
@@ -99,13 +105,23 @@ public class QuestionManager : MonoBehaviour
 
         if (isPlayerOnWater)
         {
-            //PlayeronWater
+			Debug.Log("player on water");
         }
         else
         {
             AskQuestion();
         }
 
+    }
+
+	private void OnPlayerInWater()
+    {
+		isPlayerOnWater = true;
+    }
+
+	private void OnEnemyDie()
+    {
+        AskQuestion();
     }
 
 	public int OnGetQuestionId()

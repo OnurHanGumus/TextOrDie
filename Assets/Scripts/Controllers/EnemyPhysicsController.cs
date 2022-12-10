@@ -7,7 +7,7 @@ using Signals;
 
 namespace Controllers
 {
-    public class WaterPhysicsController : MonoBehaviour
+    public class EnemyPhysicsController : MonoBehaviour
     {
         #region Self Variables
 
@@ -22,9 +22,14 @@ namespace Controllers
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player") || other.CompareTag("Enemy"))
+            if (other.CompareTag("Water"))
             {
-                PlayerSignals.Instance.onInteractedWithWater?.Invoke(other.transform);
+                LevelSignals.Instance.onPlayerInWater?.Invoke();
+            }
+            else if (other.CompareTag("Shark"))
+            {
+                transform.parent.gameObject.SetActive(false);
+                LevelSignals.Instance.onEnemyDie?.Invoke();
             }
         }
     }

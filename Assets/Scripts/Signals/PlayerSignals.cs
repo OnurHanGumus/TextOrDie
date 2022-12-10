@@ -13,6 +13,6 @@ namespace Signals
         public UnityAction onPlayerAnsweredWrong = delegate { };
         public UnityAction onWaterRising = delegate { };
         public UnityAction<float> onBlockRisingEnd = delegate { };
-        public UnityAction<Vector3> onInteractedWithWater = delegate { };
+        public UnityAction<Transform> onInteractedWithWater = delegate { };
     }
 }

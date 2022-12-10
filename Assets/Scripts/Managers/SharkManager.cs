@@ -19,10 +19,13 @@ public class SharkManager : MonoBehaviour
 
 	#region Private Variables
 	private Tween _patrollingTween;
+	private bool _isOnHunt = false;
+	private bool _isBusy = false;
 	#endregion
 	#endregion
 	private void Awake()
 	{
+
 	}
 	#region Event Subscriptions
 
@@ -52,17 +55,6 @@ public class SharkManager : MonoBehaviour
 	}
 
 	#endregion
-	private void SetState(SharkStateEnums state)
-    {
-        if (state.Equals(SharkStateEnums.Patrolling))
-        {
-			Patrolling();
-        }
-        else if (state.Equals(SharkStateEnums.LockToTarget))
-        {
-
-        }
-    }
 
 	private void Patrolling()
 	{
@@ -93,14 +85,21 @@ public class SharkManager : MonoBehaviour
 
 
 
-	private void OnInteractedWithWater(Vector3 pos)
+	private void OnInteractedWithWater(Transform target)
     {
+        if (_isBusy)
+        {
+			target.parent.gameObject.SetActive(false);
+			return;
+        }
+		_isBusy = true;
 		_patrollingTween.Kill();
-		transform.DOMove(pos, 5).SetSpeedBased(true).OnComplete(()=>
+		transform.DOMove(target.position, 5).SetSpeedBased(true).OnComplete(()=>
 		{
-			Patrolling();
+			_isBusy = false;
+
 		});
-        transform.DOLookAt(pos, 1f);
+        transform.DOLookAt(target.position, 1f);
 
     }
 

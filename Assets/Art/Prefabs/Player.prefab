@@ -676,7 +676,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4295411281249574228}
   - component: {fileID: 3519437084880685032}
-  - component: {fileID: 3519437084880685039}
   - component: {fileID: 8944325734637114970}
   - component: {fileID: 5184461616659172765}
   m_Layer: 0
@@ -718,19 +717,6 @@ Rigidbody:
   m_Interpolate: 2
   m_Constraints: 0
   m_CollisionDetection: 3
---- !u!65 &3519437084880685039
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3519437084880685038}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.23225914, y: 0.7346518, z: 0.2428734}
-  m_Center: {x: 0.0017689774, y: 0.36971858, z: 0.007075976}
 --- !u!114 &8944325734637114970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1205,6 +1191,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8585379584668622868}
+  - component: {fileID: 5157024640058999785}
   m_Layer: 0
   m_Name: Physics
   m_TagString: Untagged
@@ -1226,6 +1213,19 @@ Transform:
   m_Father: {fileID: 4295411281249574228}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5157024640058999785
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8585379584668622891}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.23225914, y: 0.7346518, z: 0.2428734}
+  m_Center: {x: 0.0017689774, y: 0.36971858, z: 0.007075976}
 --- !u!1 &8585379585790854027
 GameObject:
   m_ObjectHideFlags: 0

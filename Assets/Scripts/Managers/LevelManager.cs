@@ -123,5 +123,10 @@ namespace Managers
         {
             levelClearer.ClearActiveLevel(levelHolder.transform);
         }
+
+        private void InitializeOtherPlayers()
+        {
+
+        }
     }
 }

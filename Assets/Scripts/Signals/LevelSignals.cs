@@ -10,5 +10,7 @@ namespace Signals
     public class LevelSignals : MonoSingleton<LevelSignals>
     {
         public Func<int> onGetCurrentModdedLevel = delegate { return 0; };
+        public UnityAction onEnemyDie = delegate { };
+        public UnityAction onPlayerInWater = delegate { };
     }
 }
