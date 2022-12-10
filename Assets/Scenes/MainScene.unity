@@ -2652,6 +2652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
+  targetList: []
 --- !u!65 &519801753
 BoxCollider:
   m_ObjectHideFlags: 0

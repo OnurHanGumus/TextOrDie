@@ -12,5 +12,9 @@ namespace Signals
         public Func<int> onGetCurrentModdedLevel = delegate { return 0; };
         public UnityAction onEnemyDie = delegate { };
         public UnityAction onPlayerInWater = delegate { };
+        public UnityAction<float> onWaterRising = delegate { };
+        public UnityAction<float> onWaterRised = delegate { };
+        public UnityAction<float> onBlockRisingEnd = delegate { };
+        public UnityAction onTargetsAreCleared = delegate { };
     }
 }

@@ -86,7 +86,7 @@ public class LevelPanelController : MonoBehaviour
         {
             longestWordCharCount = answerText.text.Length;
         }
-        PlayerSignals.Instance.onBlockRisingEnd?.Invoke(longestWordCharCount * _data.UIAnimationDelay);
+        LevelSignals.Instance.onBlockRisingEnd?.Invoke(longestWordCharCount * _data.UIAnimationDelay);
     }
 
     public void OnScoreUpdateText(ScoreTypeEnums type, int score)

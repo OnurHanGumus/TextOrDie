@@ -14,6 +14,7 @@ public class SharkManager : MonoBehaviour
 
 	#region SerializeField Variables
 	[SerializeField] private SharkStateEnums currentState;
+	[SerializeField] private List<Vector3> targetList;
 
 	#endregion
 
@@ -38,14 +39,16 @@ public class SharkManager : MonoBehaviour
 	private void SubscribeEvents()
 	{
 		PlayerSignals.Instance.onInteractedWithWater += OnInteractedWithWater;
-		PlayerSignals.Instance.onWaterRising += OnWaterRisig;
+		LevelSignals.Instance.onWaterRising += OnWaterRisig;
+		LevelSignals.Instance.onWaterRised += OnWaterRised;
 		QuestionSignals.Instance.onAskQuestion += OnAskQuestion;
     }
 
 	private void UnsubscribeEvents()
 	{
 		PlayerSignals.Instance.onInteractedWithWater -= OnInteractedWithWater;
-		PlayerSignals.Instance.onWaterRising -= OnWaterRisig;
+		LevelSignals.Instance.onWaterRising -= OnWaterRisig;
+		LevelSignals.Instance.onWaterRised -= OnWaterRised;
 		QuestionSignals.Instance.onAskQuestion -= OnAskQuestion;
 
 	}
@@ -67,7 +70,7 @@ public class SharkManager : MonoBehaviour
                 transform.eulerAngles += new Vector3(0, -90, 0);
                 Patrolling();
 			}
-		).SetLookAt(0.05f);
+		).SetLookAt(0.05f).SetEase(Ease.Linear);
     }
 	private void Start()
     {
@@ -82,28 +85,26 @@ public class SharkManager : MonoBehaviour
 	private void OnAskQuestion(int value)
     {
 		Patrolling();
+		targetList.Clear();
     }
 
 
 
 	private void OnInteractedWithWater(Transform target)
     {
-		transform.position = new Vector3(transform.position.x, _waterLevel, transform.position.z);
-        if (_isBusy)
-        {
-			target.parent.gameObject.SetActive(false);
-			return;
-        }
-		_isBusy = true;
-		_patrollingTween.Kill();
-		transform.DOMove(new Vector3(target.position.x, target.transform.position.y, target.transform.position.z), 5).SetSpeedBased(true).OnComplete(()=>
-		{
-			_isBusy = false;
-
-		});
-        transform.DOLookAt(target.position, 1f);
+		targetList.Add(target.position);
 
     }
+
+	private void OnWaterRised(float waterLevel)
+	{ 
+		transform.DOPath(targetList.ToArray(), 5f).SetSpeedBased(true).SetLookAt(0.05f).OnComplete(()=>
+			{
+				transform.eulerAngles = Vector3.zero;
+				LevelSignals.Instance.onTargetsAreCleared?.Invoke();
+			}
+		).SetEase(Ease.Linear);
+	}
 
     
 

@@ -34,7 +34,8 @@ public class QuestionManager : MonoBehaviour
 	{
 		CoreGameSignals.Instance.onPlay += OnPlay;
         QuestionSignals.Instance.onGetQuestionId += OnGetQuestionId;
-		PlayerSignals.Instance.onBlockRisingEnd += OnBlockRisingEnd;
+		LevelSignals.Instance.onBlockRisingEnd += OnBlockRisingEnd;
+		LevelSignals.Instance.onTargetsAreCleared += OnTargetsAreCleared;
 		LevelSignals.Instance.onPlayerInWater += OnPlayerInWater;
 		LevelSignals.Instance.onEnemyDie += OnEnemyDie;
     }
@@ -43,7 +44,8 @@ public class QuestionManager : MonoBehaviour
 	{
 		CoreGameSignals.Instance.onPlay -= OnPlay;
         QuestionSignals.Instance.onGetQuestionId -= OnGetQuestionId;
-		PlayerSignals.Instance.onBlockRisingEnd -= OnBlockRisingEnd;
+		LevelSignals.Instance.onBlockRisingEnd -= OnBlockRisingEnd;
+		LevelSignals.Instance.onTargetsAreCleared -= OnTargetsAreCleared;
 		LevelSignals.Instance.onPlayerInWater -= OnPlayerInWater;
 		LevelSignals.Instance.onEnemyDie -= OnEnemyDie;
 	}
@@ -80,7 +82,7 @@ public class QuestionManager : MonoBehaviour
 	private IEnumerator WaterRising(float delay)
     {
 		yield return new WaitForSeconds(delay);
-		PlayerSignals.Instance.onWaterRising?.Invoke(waterTransform.position.y + 8);
+		LevelSignals.Instance.onWaterRising?.Invoke(waterTransform.position.y + 8);
 
 		yield return new WaitForSeconds(2f);
         questionId++;
@@ -108,7 +110,12 @@ public class QuestionManager : MonoBehaviour
 
 	private void OnEnemyDie()
     {
-        AskQuestion();
+        //AskQuestion();
+    }
+
+	private void OnTargetsAreCleared()
+    {
+		AskQuestion();
     }
 
 	public int OnGetQuestionId()

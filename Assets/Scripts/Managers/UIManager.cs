@@ -56,7 +56,7 @@ namespace Managers
             QuestionSignals.Instance.onAskQuestion += levelPanelController.OnAskQuestion;
             QuestionSignals.Instance.onSendAnswerToPanel += levelPanelController.OnSendAnswerToPanel;
             QuestionSignals.Instance.onShowAnswerPanel += levelPanelController.OnShowEnemyAnswerInPanel;
-            PlayerSignals.Instance.onWaterRising += levelPanelController.OnWaterRising;
+            LevelSignals.Instance.onWaterRising += levelPanelController.OnWaterRising;
             QuestionSignals.Instance.onPlayerHitEnterButton += levelPanelController.OnPlayerHitEnterButton;
         }
 
@@ -73,7 +73,7 @@ namespace Managers
             QuestionSignals.Instance.onAskQuestion -= levelPanelController.OnAskQuestion;
             QuestionSignals.Instance.onSendAnswerToPanel -= levelPanelController.OnSendAnswerToPanel;
             QuestionSignals.Instance.onShowAnswerPanel -= levelPanelController.OnShowEnemyAnswerInPanel;
-            PlayerSignals.Instance.onWaterRising -= levelPanelController.OnWaterRising;
+            LevelSignals.Instance.onWaterRising -= levelPanelController.OnWaterRising;
             QuestionSignals.Instance.onPlayerHitEnterButton -= levelPanelController.OnPlayerHitEnterButton;
         }
 

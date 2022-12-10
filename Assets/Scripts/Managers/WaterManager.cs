@@ -30,12 +30,12 @@ public class WaterManager : MonoBehaviour
 
 	private void SubscribeEvents()
 	{
-		PlayerSignals.Instance.onWaterRising += OnWaterRising;
+		LevelSignals.Instance.onWaterRising += OnWaterRising;
     }
 
 	private void UnsubscribeEvents()
 	{
-		PlayerSignals.Instance.onWaterRising -= OnWaterRising;
+		LevelSignals.Instance.onWaterRising -= OnWaterRising;
 
 	}
 
@@ -52,7 +52,10 @@ public class WaterManager : MonoBehaviour
 
 	private void OnWaterRising(float value)
     {
-		transform.DOMoveY(transform.position.y + 8, 1.5f);
+		transform.DOMoveY(transform.position.y + 8, 1.5f).OnComplete(()=> 
+		{
+			LevelSignals.Instance.onWaterRised?.Invoke(transform.position.y);
+		});
 
 	}
 
