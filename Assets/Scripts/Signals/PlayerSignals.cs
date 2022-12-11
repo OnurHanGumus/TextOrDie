@@ -9,7 +9,7 @@ namespace Signals
 {
     public class PlayerSignals : MonoSingleton<PlayerSignals>
     {
-        public UnityAction<int> onPlayerAnsweredRight = delegate { };
+        public UnityAction<int,string> onPlayerAnsweredRight = delegate { };
         public UnityAction onPlayerAnsweredWrong = delegate { };
         public UnityAction<Transform> onInteractedWithWater = delegate { };
     }

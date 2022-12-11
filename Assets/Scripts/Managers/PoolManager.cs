@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Signals;
 using Enums;
+using TMPro;
 
 public class PoolManager : MonoBehaviour
 {

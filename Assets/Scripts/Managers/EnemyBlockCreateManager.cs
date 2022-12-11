@@ -79,13 +79,12 @@ public class EnemyBlockCreateManager : MonoBehaviour
 			GameObject block = PoolSignals.Instance.onGetObject(PoolEnums.Block);
 			block.transform.localScale = Vector3.zero;
 			block.transform.position = new Vector3(transform.position.x, blockIndeks++, 5);
-   //         if (word !="")
-   //         {
-			//	block.transform.GetChild(0).GetComponent<TextMeshPro>().text = word[word.Length - i - 1].ToString();
-
-			//}
-			block.SetActive(true);
-			block.transform.DOScale(new Vector3(2, 1, 2), 0.5f);
+            if (word != "")
+            {
+                block.transform.GetChild(0).GetComponent<TextMeshPro>().text = word[word.Length - i - 1].ToString();
+            }
+            block.SetActive(true);
+			block.transform.DOScale(new Vector3(1, 1, 1), 0.5f);
 
 
 
@@ -104,7 +103,7 @@ public class EnemyBlockCreateManager : MonoBehaviour
 		string randomAnswer = QuestionSignals.Instance.onGetRandomAnswer();
 		QuestionSignals.Instance.onSendAnswerToPanel?.Invoke(randomAnswer);
 		QuestionSignals.Instance.onShowAnswerPanel?.Invoke();
-        StartCoroutine(CreateBlocks(randomAnswer.Length, arg0));
+        StartCoroutine(CreateBlocks(randomAnswer.Length, randomAnswer));
     }
 
 	private void OnRestartLevel()

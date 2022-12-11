@@ -138,7 +138,7 @@ public class AnswerTableManager : MonoBehaviour
 
 		if (isAnsweredTrue)
         {
-			PlayerSignals.Instance.onPlayerAnsweredRight?.Invoke(typedValue.Length);
+			PlayerSignals.Instance.onPlayerAnsweredRight?.Invoke(typedValue.Length, typedValue);
 			Debug.Log("player answered right");
         }
         else

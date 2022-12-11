@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Signals;
 using DG.Tweening;
 using Enums;
+using TMPro;
 
 public class PlayerBlockCreateManager : MonoBehaviour
 {
@@ -57,10 +58,10 @@ public class PlayerBlockCreateManager : MonoBehaviour
 
 	private void InitializeBlocks()
     {
-		StartCoroutine(CreateBlocks(5));
+		StartCoroutine(CreateBlocks(5, ""));
     }
 
-	private IEnumerator CreateBlocks(int charCount)
+	private IEnumerator CreateBlocks(int charCount, string word)
     {
 		yield return new WaitForSeconds(1f);
 		for (int i = 0; i < charCount; i++)
@@ -68,11 +69,15 @@ public class PlayerBlockCreateManager : MonoBehaviour
 			GameObject block = PoolSignals.Instance.onGetObject(PoolEnums.Block);
 			block.transform.localScale = Vector3.zero;
 			block.transform.position = new Vector3(0, blockIndeks++, 5);
+			if (word != "")
+			{
+				block.transform.GetChild(0).GetComponent<TextMeshPro>().text = word[word.Length - i - 1].ToString();
+			}
 			block.SetActive(true);
+			block.transform.DOScale(new Vector3(1, 1, 1), 0.5f);
 
 			transform.DOMoveY(blockIndeks - 0.5f, 0.2f);
 
-			block.transform.DOScale(new Vector3(2, 1, 2), 0.5f);
 			yield return new WaitForSeconds(0.2f);
 
 		}
@@ -83,9 +88,11 @@ public class PlayerBlockCreateManager : MonoBehaviour
 		InitializeBlocks();
 
 	}
-	private void OnPlayerAnsweredRight(int charCount)
+	private void OnPlayerAnsweredRight(int charCount, string word)
     {
-		StartCoroutine(CreateBlocks(charCount));
+		word = word.Remove(word.Length - 1);
+		charCount = word.Length;
+		StartCoroutine(CreateBlocks(charCount, word));
     }
 
 	private void OnRestartLevel()

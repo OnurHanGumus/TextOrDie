@@ -70,7 +70,7 @@ public class PlayerManager : MonoBehaviour
 		//transform.position = new Vector3(0, playerCurrentPos, 5);
     }
 
-	private void OnPlayerAnsweredRight(int charCount)
+	private void OnPlayerAnsweredRight(int charCount, string word)
     {
 		//transform.position = new Vector3(0, playerInitialPosY + charCount, 5);
     }
