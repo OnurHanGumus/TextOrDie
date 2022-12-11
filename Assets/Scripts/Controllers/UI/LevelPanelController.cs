@@ -19,6 +19,7 @@ public class LevelPanelController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreTxt;
     [SerializeField] private TextMeshProUGUI charCounterText;
     [SerializeField] private TextMeshProUGUI questionText, answerText;
+    [SerializeField] private TextMeshProUGUI tournamentText;
     [SerializeField] private int questionId = 0;
     [SerializeField] private List<string> enemyAnswerList;
     [SerializeField] private Transform enemyAnswerPanel;
@@ -29,6 +30,7 @@ public class LevelPanelController : MonoBehaviour
     #endregion
     #region Private Variables
     private UIData _data;
+    private int _levelId = 0;
     #endregion
     #endregion
     private void Awake()
@@ -42,8 +44,19 @@ public class LevelPanelController : MonoBehaviour
     
     private void Start()
     {
+        GetValues();
+        SetTexts();
     }
-    
+
+    private void GetValues()
+    {
+        _levelId = LevelSignals.Instance.onGetLevel();
+    }
+    private void SetTexts()
+    {
+        tournamentText.text = "TOURNAMENT " + _levelId;
+    }
+
     public void PlayerHitEnterButton()
     {
         QuestionSignals.Instance.onPlayerHitEnterButton?.Invoke(answerText.text);
@@ -88,13 +101,17 @@ public class LevelPanelController : MonoBehaviour
         }
         LevelSignals.Instance.onBlockRisingEnd?.Invoke(longestWordCharCount * _data.UIAnimationDelay);
     }
-
+    public void OnPlay()
+    {
+        GetValues();
+        SetTexts();
+    }
     public void OnScoreUpdateText(ScoreTypeEnums type, int score)
     {
-        if (type.Equals(ScoreTypeEnums.Score))
-        {
-            scoreTxt.text = score.ToString();
-        }
+        //if (type.Equals(ScoreTypeEnums.Score))
+        //{
+        //    scoreTxt.text = score.ToString();
+        //}
     }
 
     public void OnAskQuestion(int id)
@@ -127,6 +144,6 @@ public class LevelPanelController : MonoBehaviour
     }
     public void OnRestartLevel()
     {
-        scoreTxt.text = 0.ToString();
+        //scoreTxt.text = 0.ToString();
     }
 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CD_UI
   m_EditorClassIdentifier: 
   Data:
-    QuestionPanelScreenPosY: 668
+    QuestionPanelScreenPosY: 707
     AnswerPanelScreenPosX: 0
     EnemyAnswerPanelScreenPosX: 0
     QuestionPanelClosePosY: 1250

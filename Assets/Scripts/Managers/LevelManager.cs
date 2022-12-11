@@ -30,7 +30,7 @@ namespace Managers
 
         #region Private Variables
 
-        [ShowInInspector] private int _levelID;
+        [ShowInInspector] private int _levelId, _moddedLevelId;
         private LevelData _data;
 
 
@@ -46,19 +46,23 @@ namespace Managers
 
         private void Init()
         {
-            _levelID = GetActiveLevel();
             _data = GetData();
         }
 
         private void Start()
         {
-            
+            GetValuesFromSave();
         }
 
-        private int GetActiveLevel()
+        private void GetValuesFromSave()
         {
-            if (!ES3.FileExists()) return 0;
-            return ES3.KeyExists("Level") ? ES3.Load<int>("Level") : 0;
+            _levelId = SaveSignals.Instance.onGetScore(SaveLoadStates.Level, SaveFiles.SaveFile);
+        }
+
+
+        private int OnGetModdedLevelId()
+        {
+            return _moddedLevelId;
         }
 
         private LevelData GetData() => Resources.Load<CD_Level>("Data/CD_Level").Data;
@@ -75,8 +79,10 @@ namespace Managers
             CoreGameSignals.Instance.onClearActiveLevel += OnClearActiveLevel;
             CoreGameSignals.Instance.onNextLevel += OnNextLevel;
             CoreGameSignals.Instance.onRestartLevel += OnRestartLevel;
-            CoreGameSignals.Instance.onGetLevelID += OnGetLevelID;
             CoreGameSignals.Instance.onLevelInitialize += OnInitializeLevel;
+
+            LevelSignals.Instance.onGetCurrentModdedLevel += OnGetModdedLevelId;
+            LevelSignals.Instance.onGetLevel += OnGetLevelID;
 
         }
 
@@ -88,8 +94,10 @@ namespace Managers
             CoreGameSignals.Instance.onClearActiveLevel -= OnClearActiveLevel;
             CoreGameSignals.Instance.onNextLevel -= OnNextLevel;
             CoreGameSignals.Instance.onRestartLevel -= OnRestartLevel;
-            CoreGameSignals.Instance.onGetLevelID -= OnGetLevelID;
             CoreGameSignals.Instance.onLevelInitialize -= OnInitializeLevel;
+
+            LevelSignals.Instance.onGetCurrentModdedLevel -= OnGetModdedLevelId;
+            LevelSignals.Instance.onGetLevel -= OnGetLevelID;
 
         }
 
@@ -103,8 +111,8 @@ namespace Managers
 
         private void OnNextLevel()
         {
-            _levelID++;
-            SaveSignals.Instance.onSaveScore?.Invoke(_levelID, SaveLoadStates.Score, SaveFiles.SaveFile);
+            _levelId++;
+            SaveSignals.Instance.onSaveScore?.Invoke(_levelId, SaveLoadStates.Level, SaveFiles.SaveFile);
             CoreGameSignals.Instance.onClearActiveLevel?.Invoke();
             CoreGameSignals.Instance.onRestartLevel?.Invoke();
             //CoreGameSignals.Instance.onSaveAndResetGameData?.Invoke();
@@ -121,7 +129,7 @@ namespace Managers
 
         private int OnGetLevelID()
         {
-            return _levelID;
+            return _levelId;
         }
 
 
@@ -136,7 +144,8 @@ namespace Managers
         private void InitializeLevel()
         {
             UnityEngine.Object[] Levels = Resources.LoadAll("Levels");
-            int newLevelId = _levelID % Levels.Length;
+            int newLevelId = _levelId % Levels.Length;
+            _moddedLevelId = newLevelId;
             levelLoader.InitializeLevel((GameObject)Levels[newLevelId], levelHolder.transform);
 
         }

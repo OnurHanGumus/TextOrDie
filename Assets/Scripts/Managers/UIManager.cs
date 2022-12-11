@@ -52,6 +52,7 @@ namespace Managers
             CoreGameSignals.Instance.onLevelFailed += OnLevelFailed;
             CoreGameSignals.Instance.onLevelSuccessful += OnLevelSuccessful;
             CoreGameSignals.Instance.onRestartLevel += levelPanelController.OnRestartLevel;
+            CoreGameSignals.Instance.onPlay += levelPanelController.OnPlay;
             ScoreSignals.Instance.onHighScoreChanged += highScorePanelController.OnUpdateText;
             QuestionSignals.Instance.onAskQuestion += levelPanelController.OnAskQuestion;
             QuestionSignals.Instance.onSendAnswerToPanel += levelPanelController.OnSendAnswerToPanel;
@@ -69,6 +70,7 @@ namespace Managers
             CoreGameSignals.Instance.onLevelFailed -= OnLevelFailed;
             CoreGameSignals.Instance.onLevelSuccessful -= OnLevelSuccessful;
             CoreGameSignals.Instance.onRestartLevel -= levelPanelController.OnRestartLevel;
+            CoreGameSignals.Instance.onPlay -= levelPanelController.OnPlay;
             ScoreSignals.Instance.onHighScoreChanged -= highScorePanelController.OnUpdateText;
             QuestionSignals.Instance.onAskQuestion -= levelPanelController.OnAskQuestion;
             QuestionSignals.Instance.onSendAnswerToPanel -= levelPanelController.OnSendAnswerToPanel;
