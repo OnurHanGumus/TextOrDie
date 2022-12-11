@@ -96,7 +96,6 @@ public class QuestionManager : MonoBehaviour
 
         if (isPlayerOnWater)
         {
-			Debug.Log("player on water");
         }
         else
         {

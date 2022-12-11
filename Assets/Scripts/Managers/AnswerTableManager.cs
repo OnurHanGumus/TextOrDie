@@ -118,7 +118,7 @@ public class AnswerTableManager : MonoBehaviour
 	{		
 		foreach (var i in dataSet)
         {
-            if (find.ToString().Equals(i.answer.ToString()))
+            if (find.ToString().Equals(i.answer.ToString(),System.StringComparison.OrdinalIgnoreCase))
             {
 				return true;
             }
@@ -139,12 +139,10 @@ public class AnswerTableManager : MonoBehaviour
 		if (isAnsweredTrue)
         {
 			PlayerSignals.Instance.onPlayerAnsweredRight?.Invoke(typedValue.Length, typedValue);
-			Debug.Log("player answered right");
         }
         else
         {
 			PlayerSignals.Instance.onPlayerAnsweredWrong?.Invoke();
-			Debug.Log("player answered wrong");
 		}
 	}
 
