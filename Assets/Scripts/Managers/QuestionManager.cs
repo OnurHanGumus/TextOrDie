@@ -89,7 +89,7 @@ public class QuestionManager : MonoBehaviour
 		yield return new WaitForSeconds(2f);
         questionId++;
 
-        if (questionId == 2)
+        if (questionId == 4)
         {
             questionId = 0;
         }
