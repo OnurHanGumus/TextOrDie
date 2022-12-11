@@ -8,7 +8,6 @@ namespace Signals
     public class ScoreSignals : MonoSingleton<ScoreSignals>
     {
         public Func<int> onGetMoney = delegate { return 0; };
-        public Func<int> onGetGem = delegate { return 0; };
         public Func<int> onGetScore = delegate { return 0; };
 
         public UnityAction<ScoreTypeEnums, int> onScoreIncrease = delegate { };

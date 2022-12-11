@@ -104,6 +104,7 @@ namespace Managers
         private void OnNextLevel()
         {
             _levelID++;
+            SaveSignals.Instance.onSaveScore?.Invoke(_levelID, SaveLoadStates.Score, SaveFiles.SaveFile);
             CoreGameSignals.Instance.onClearActiveLevel?.Invoke();
             CoreGameSignals.Instance.onRestartLevel?.Invoke();
             //CoreGameSignals.Instance.onSaveAndResetGameData?.Invoke();
