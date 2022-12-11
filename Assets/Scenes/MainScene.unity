@@ -2076,7 +2076,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &343995647
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2108,9 +2108,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 343995646}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!1 &357006355
 GameObject:
@@ -3445,10 +3445,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockPrefab: {fileID: 2203849640668246213, guid: 91a03815fe9c2fe459cbe195967dd1fb, type: 3}
   enemyPrefab: {fileID: 4926313946864681842, guid: c873c81f2c628474eb657d2b583b0771, type: 3}
-  particlePrefab: {fileID: 0}
+  textPrefab: {fileID: 402828449349011364, guid: 3af1af003d5dcbc43ac720442d299505, type: 3}
+  particlePrefab: {fileID: 4533454623868591803, guid: e8e21076d0ffba5429aa92536bf36e3b, type: 3}
   amountBlocks: 200
   amountParticle: 5
   amountEnemies: 10
+  amountTexts: 200
 --- !u!1 &744399279
 GameObject:
   m_ObjectHideFlags: 0
@@ -7978,7 +7980,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1902187554
 RectTransform:
   m_ObjectHideFlags: 0

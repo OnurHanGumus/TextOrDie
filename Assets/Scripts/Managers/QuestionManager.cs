@@ -17,6 +17,7 @@ public class QuestionManager : MonoBehaviour
 	#endregion
 
 	#region Private Variables
+	private int _remainEnemy = 4;
 	#endregion
 	#endregion
 	private void Awake()
@@ -32,6 +33,7 @@ public class QuestionManager : MonoBehaviour
 	private void SubscribeEvents()
 	{
 		CoreGameSignals.Instance.onPlay += OnPlay;
+		CoreGameSignals.Instance.onRestartLevel += OnRestartLevel;
         QuestionSignals.Instance.onGetQuestionId += OnGetQuestionId;
 		LevelSignals.Instance.onBlockRisingEnd += OnBlockRisingEnd;
 		LevelSignals.Instance.onTargetsAreCleared += OnTargetsAreCleared;
@@ -42,6 +44,7 @@ public class QuestionManager : MonoBehaviour
 	private void UnsubscribeEvents()
 	{
 		CoreGameSignals.Instance.onPlay -= OnPlay;
+		CoreGameSignals.Instance.onRestartLevel -= OnRestartLevel;
         QuestionSignals.Instance.onGetQuestionId -= OnGetQuestionId;
 		LevelSignals.Instance.onBlockRisingEnd -= OnBlockRisingEnd;
 		LevelSignals.Instance.onTargetsAreCleared -= OnTargetsAreCleared;
@@ -109,7 +112,11 @@ public class QuestionManager : MonoBehaviour
 
 	private void OnEnemyDie()
     {
-        //AskQuestion();
+		--_remainEnemy;
+        if (_remainEnemy <= 0)
+        {
+			CoreGameSignals.Instance.onLevelSuccessful?.Invoke();
+        }
     }
 
 	private void OnTargetsAreCleared()
@@ -121,5 +128,10 @@ public class QuestionManager : MonoBehaviour
 	{
 		return questionId;
 	}
+
+	private void OnRestartLevel()
+    {
+		_remainEnemy = 4;
+    }
 
 }

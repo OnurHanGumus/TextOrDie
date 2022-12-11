@@ -12,6 +12,7 @@ public class PoolManager : MonoBehaviour
 
     [SerializeField] private GameObject blockPrefab;
     [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private GameObject textPrefab;
     [SerializeField] private GameObject particlePrefab;
 
     [SerializeField] private Dictionary<PoolEnums, List<GameObject>> poolDictionary;
@@ -20,6 +21,7 @@ public class PoolManager : MonoBehaviour
     [SerializeField] private int amountBlocks = 50;
     [SerializeField] private int amountParticle = 5;
     [SerializeField] private int amountEnemies = 5;
+    [SerializeField] private int amountTexts = 200;
 
 
 
