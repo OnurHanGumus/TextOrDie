@@ -41,7 +41,6 @@ namespace Managers
         private void Awake()
         {
             Init();
-            InitializeLevel();
         }
 
         private void Init()
@@ -52,11 +51,14 @@ namespace Managers
         private void Start()
         {
             GetValuesFromSave();
+            InitializeLevel();
+
         }
 
         private void GetValuesFromSave()
         {
             _levelId = SaveSignals.Instance.onGetScore(SaveLoadStates.Level, SaveFiles.SaveFile);
+            Debug.Log(_levelId);
         }
 
 
