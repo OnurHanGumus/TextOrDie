@@ -58,7 +58,6 @@ namespace Managers
         private void GetValuesFromSave()
         {
             _levelId = SaveSignals.Instance.onGetScore(SaveLoadStates.Level, SaveFiles.SaveFile);
-            Debug.Log(_levelId);
         }
 
 

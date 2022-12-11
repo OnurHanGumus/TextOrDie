@@ -20,6 +20,7 @@ public class SharkManager : MonoBehaviour
 
 	#region Private Variables
 	private Tween _patrollingTween;
+	private Tween _huntingTween;
 	private bool _isOnHunt = false;
 	private bool _isBusy = false;
 	#endregion
@@ -41,6 +42,7 @@ public class SharkManager : MonoBehaviour
 		LevelSignals.Instance.onWaterRising += OnWaterRisig;
 		LevelSignals.Instance.onWaterRised += OnWaterRised;
 		QuestionSignals.Instance.onAskQuestion += OnAskQuestion;
+		CoreGameSignals.Instance.onLevelSuccessful += OnLevelSuccessful;
     }
 
 	private void UnsubscribeEvents()
@@ -49,7 +51,7 @@ public class SharkManager : MonoBehaviour
 		LevelSignals.Instance.onWaterRising -= OnWaterRisig;
 		LevelSignals.Instance.onWaterRised -= OnWaterRised;
 		QuestionSignals.Instance.onAskQuestion -= OnAskQuestion;
-
+		CoreGameSignals.Instance.onLevelSuccessful -= OnLevelSuccessful;
 	}
 
 	private void OnDisable()
@@ -96,12 +98,17 @@ public class SharkManager : MonoBehaviour
 
 	private void OnWaterRised(float waterLevel)
 	{ 
-		transform.DOPath(targetList.ToArray(), 5f).SetSpeedBased(true).SetLookAt(0.05f).OnComplete(()=>
+		_huntingTween = transform.DOPath(targetList.ToArray(), 5f).SetSpeedBased(true).SetLookAt(0.05f).OnComplete(()=>
 			{
 				transform.eulerAngles = Vector3.zero;
 				LevelSignals.Instance.onTargetsAreCleared?.Invoke();
 			}
 		).SetEase(Ease.Linear);
+	}
+
+	private void OnLevelSuccessful()
+    {
+		_huntingTween.Kill();
 	}
 
     
