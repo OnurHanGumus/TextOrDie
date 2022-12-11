@@ -104,10 +104,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube
       objectReference: {fileID: 0}
-    - target: {fileID: 2203849640668246215, guid: 91a03815fe9c2fe459cbe195967dd1fb, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 809a986ef2dbc4c49b27f0aeacf2a1cd, type: 2}
     - target: {fileID: 2203849640668246233, guid: 91a03815fe9c2fe459cbe195967dd1fb, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -257,6 +253,14 @@ PrefabInstance:
     - target: {fileID: 8329509733232179676, guid: 3af1af003d5dcbc43ac720442d299505, type: 3}
       propertyPath: m_text
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329509733232179676, guid: 3af1af003d5dcbc43ac720442d299505, type: 3}
+      propertyPath: m_fontSize
+      value: 7.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329509733232179676, guid: 3af1af003d5dcbc43ac720442d299505, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 7.26
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3af1af003d5dcbc43ac720442d299505, type: 3}
