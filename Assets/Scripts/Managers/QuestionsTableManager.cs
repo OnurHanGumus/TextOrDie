@@ -39,11 +39,14 @@ public class QuestionsTableManager : MonoBehaviour
 	private void SubscribeEvents()
 	{
 		QuestionSignals.Instance.onGetQuestion += OnGetQuestion;
+		QuestionSignals.Instance.onGetTotalQuestionCount += OnGetTotalQuestionCount;
+
 	}
 
 	private void UnsubscribeEvents()
 	{
 		QuestionSignals.Instance.onGetQuestion -= OnGetQuestion;
+		QuestionSignals.Instance.onGetTotalQuestionCount -= OnGetTotalQuestionCount;
 	}
 
 	private void OnDisable()
@@ -110,6 +113,11 @@ public class QuestionsTableManager : MonoBehaviour
 	private string OnGetQuestion(int id)
     {
 		return GetAt(id).question;
+    }
+
+	private int OnGetTotalQuestionCount()
+    {
+		return _rowList.Count;
     }
 	//private int OnGetQuestionId()
 	//{

@@ -18,10 +18,16 @@ public class QuestionManager : MonoBehaviour
 
 	#region Private Variables
 	private int _remainEnemy = 4;
+	private int _totalQuestionCount = 100;
 	#endregion
 	#endregion
 	private void Awake()
 	{
+		Init();
+	}
+    private void Init()
+    {
+		_totalQuestionCount = QuestionSignals.Instance.onGetTotalQuestionCount(); 
 	}
 	#region Event Subscriptions
 
@@ -89,7 +95,7 @@ public class QuestionManager : MonoBehaviour
 		yield return new WaitForSeconds(2f);
         questionId++;
 
-        if (questionId == 4)
+        if (questionId == _totalQuestionCount)
         {
             questionId = 0;
         }
