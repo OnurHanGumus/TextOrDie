@@ -16,13 +16,13 @@
 1,6,apricot
 1,7,coconut
 2,0,Andorra
-2,1,UnitedArabEmirates
+2,1,UnitedArab
 2,2,Afghanistan
 2,3,AntiguaandBarbuda
 2,4,Anguilla
 2,5,Albania
 2,6,Armenia
-2,7,NetherlandsAntilles
+2,7,Netherlands
 2,8,Angola
 2,9,Antarctica
 2,10,Argentina
@@ -31,7 +31,7 @@
 2,13,Australia
 2,14,Aruba
 2,15,Azerbaijan
-2,16,BosniaandHerzegovina
+2,16,Bosniaand
 2,17,Barbados
 2,18,Bangladesh
 2,19,Belgium
@@ -51,13 +51,13 @@
 2,33,Belarus
 2,34,Belize
 2,35,Canada
-2,36,Cocos [Keeling] Islands
-2,37,Congo [DRC]
-2,38,Central African Republic
-2,39,Congo [Republic]
+2,36,Cocos
+2,37,Congo
+2,38,Central
+2,39,Congo
 2,40,Switzerland
-2,41,Côte d'Ivoire
-2,42,Cook Islands
+2,41,Côte
+2,42,Cook
 2,43,Chile
 2,44,Cameroon
 2,45,China
@@ -65,33 +65,33 @@
 2,47,Costa Rica
 2,48,Cuba
 2,49,Cape Verde
-2,50,Christmas Island
+2,50,Christmas
 2,51,Cyprus
-2,52,Czech Republic
+2,52,Czecs
 2,53,Germany
 2,54,Djibouti
 2,55,Denmark
 2,56,Dominica
-2,57,Dominican Republic
+2,57,Dominican
 2,58,Algeria
 2,59,Ecuador
 2,60,Estonia
 2,61,Egypt
-2,62,Western Sahara
+2,62,Western
 2,63,Eritrea
 2,64,Spain
 2,65,Ethiopia
 2,66,Finland
 2,67,Fiji
-2,68,Falkland Islands [Islas Malvinas]
+2,68,Falkland
 2,69,Micronesia
-2,70,Faroe Islands
+2,70,Faroe
 2,71,France
 2,72,Gabon
-2,73,United Kingdom
+2,73,United
 2,74,Grenada
 2,75,Georgia
-2,76,French Guiana
+2,76,French
 2,77,Guernsey
 2,78,Ghana
 2,79,Gibraltar
@@ -99,16 +99,16 @@
 2,81,Gambia
 2,82,Guinea
 2,83,Guadeloupe
-2,84,Equatorial Guinea
+2,84,Equatorial
 2,85,Greece
-2,86,South Georgia and the South Sandwich Islands
+2,86,South
 2,87,Guatemala
 2,88,Guam
-2,89,Guinea-Bissau
+2,89,Guinea
 2,90,Guyana
-2,91,Gaza Strip
-2,92,Hong Kong
-2,93,Heard Island and McDonald Islands
+2,91,Gaza
+2,92,HongKong
+2,93,Heard
 2,94,Honduras
 2,95,Croatia
 2,96,Haiti
@@ -116,9 +116,9 @@
 2,98,Indonesia
 2,99,Ireland
 2,100,Israel
-2,101,Isle of Man
+2,101,Isle
 2,102,India
-2,103,British Indian Ocean Territory
+2,103,British
 2,104,Iraq
 2,105,Iran
 2,106,Iceland
@@ -132,17 +132,17 @@
 2,114,Cambodia
 2,115,Kiribati
 2,116,Comoros
-2,117,Saint Kitts and Nevis
-2,118,North Korea
-2,119,South Korea
+2,117,Saint
+2,118,Korea
+2,119,Korea
 2,120,Kuwait
-2,121,Cayman Islands
+2,121,Cayman
 2,122,Kazakhstan
 2,123,Laos
 2,124,Lebanon
-2,125,Saint Lucia
+2,125,Saint
 2,126,Liechtenstein
-2,127,Sri Lanka
+2,127,Sri
 2,128,Liberia
 2,129,Lesotho
 2,130,Lithuania
@@ -154,13 +154,13 @@
 2,136,Moldova
 2,137,Montenegro
 2,138,Madagascar
-2,139,Marshall Islands
+2,139,Marshall
 2,140,Macedonia
 2,141,Mali
 2,142,Myanmar
 2,143,Mongolia
 2,144,Macau
-2,145,NorthernMarianaIslands
+2,145,Northern
 2,146,Martinique
 2,147,Mauritania
 2,148,Montserrat
@@ -174,7 +174,7 @@
 2,156,Namibia
 2,157,New Caledonia
 2,158,Niger
-2,159,Norfolk Island
+2,159,Norfolk
 2,160,Nigeria
 2,161,Nicaragua
 2,162,Netherlands
@@ -182,19 +182,19 @@
 2,164,Nepal
 2,165,Nauru
 2,166,Niue
-2,167,New Zealand
+2,167,NewZealand
 2,168,Oman
 2,169,Panama
 2,170,Peru
-2,171,French Polynesia
-2,172,Papua New Guinea
+2,171,French
+2,172,Papua
 2,173,Philippines
 2,174,Pakistan
 2,175,Poland
-2,176,Saint Pierre and Miquelon
-2,177,Pitcairn Islands
-2,178,Puerto Rico
-2,179,Palestinian Territories
+2,176,Saint
+2,177,Pitcairn
+2,178,Puerto
+2,179,Palestinian
 2,180,Portugal
 2,181,Palau
 2,182,Paraguay
@@ -205,27 +205,27 @@
 2,187,Russia
 2,188,Rwanda
 2,189,SaudiArabia
-2,190,SolomonIslands
+2,190,Solomon
 2,191,Seychelles
 2,192,Sudan
 2,193,Sweden
 2,194,Singapore
 2,195,SaintHelena
 2,196,Slovenia
-2,197,SvalbardandJanMayen
+2,197,Svalbard
 2,198,Slovakia
 2,199,SierraLeone
 2,200,SanMarino
 2,201,Senegal
 2,202,Somalia
 2,203,Suriname
-2,204,SãoToméandPríncipe
+2,204,SãoTomé
 2,205,ElSalvador
 2,206,Syria
 2,207,Swaziland
-2,208,TurksandCaicosIslands
+2,208,Turks
 2,209,Chad
-2,210,FrenchSouthernTerritories
+2,210,French
 2,211,Togo
 2,212,Thailand
 2,213,Tajikistan
@@ -235,24 +235,24 @@
 2,217,Tunisia
 2,218,Tonga
 2,219,Turkey
-2,220,TrinidadandTobago
+2,220,Trinid
 2,221,Tuvalu
 2,222,Taiwan
 2,223,Tanzania
 2,224,Ukraine
 2,225,Uganda
-2,226,U.S. Minor Outlying Islands
+2,226,US
 2,227,UnitedStates
 2,228,Uruguay
 2,229,Uzbekistan
 2,230,VaticanCity
-2,231,SaintVincentandtheGrenadines
+2,231,Saint
 2,232,Venezuela
-2,233,BritishVirginIslands
-2,234,U.S.VirginIslands
+2,233,British
+2,234,US
 2,235,Vietnam
 2,236,Vanuatu
-2,237,WallisandFutuna
+2,237,Wall
 2,238,Samoa
 2,239,Kosovo
 2,240,Yemen

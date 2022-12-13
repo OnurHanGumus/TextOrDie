@@ -13,6 +13,8 @@ public class BlockManager : MonoBehaviour
 
 	#region SerializeField Variables
 	[SerializeField] private TextMeshPro charText;
+	[SerializeField] private int blockId = 0;
+	[SerializeField] private bool isFirstTimeInitialized = true;
 	#endregion
 
 	#region Private Variables
@@ -26,6 +28,7 @@ public class BlockManager : MonoBehaviour
 	private void OnEnable()
 	{
 		SubscribeEvents();
+		UpdateText();
 	}
 
 	private void SubscribeEvents()
@@ -54,6 +57,16 @@ public class BlockManager : MonoBehaviour
 	{
 
 	}
+
+	private void UpdateText()
+    {
+        if (isFirstTimeInitialized)
+        {
+			isFirstTimeInitialized = false;
+			return;
+        }
+		charText.text = QuestionSignals.Instance.onGetWord(blockId);
+    }
 
 	private void OnRestartLevel()
     {

@@ -72,8 +72,21 @@ public class QuestionManager : MonoBehaviour
 
     private void OnPlay()
     {
-		AskQuestion();
+		StartCoroutine(AskFirstQuestion());
+		StartCoroutine(BlocksFirstMove());
 	}
+
+	private IEnumerator BlocksFirstMove()
+    {
+		yield return new WaitForSeconds(0.5f);
+		QuestionSignals.Instance.onBlocksFirstMove?.Invoke();
+    }
+
+	private IEnumerator AskFirstQuestion()
+    {
+		yield return new WaitForSeconds(2.5f);
+		AskQuestion();
+    }
     public void AskQuestion()
 	{
 		isPlayerOnWater = false;

@@ -93,6 +93,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charText: {fileID: 5586091555351701783}
+  blockId: 5
+  isFirstTimeInitialized: 1
 --- !u!1001 &3862260065072366557
 PrefabInstance:
   m_ObjectHideFlags: 0

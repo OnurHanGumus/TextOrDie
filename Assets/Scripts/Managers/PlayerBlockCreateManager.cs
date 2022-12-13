@@ -8,6 +8,8 @@ using TMPro;
 using Data.ValueObject;
 using Data.UnityObject;
 using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 public class PlayerBlockCreateManager : MonoBehaviour
 {
@@ -24,14 +26,17 @@ public class PlayerBlockCreateManager : MonoBehaviour
 	#region Private Variables
 	private LevelData _data;
 	private int _initializeBlockCounts = 5;
+	private bool _canBlocksInitialize = false;
+	private bool _isNewCreated = true;
 	#endregion
 	#endregion
 	private void Awake()
 	{
 		Init();
+
 	}
 
-    private void Init()
+	private void Init()
     {
 		_data = GetData();
 		_initializeBlockCounts = _data.InitializeBlockCounts;
@@ -43,6 +48,7 @@ public class PlayerBlockCreateManager : MonoBehaviour
     private void OnEnable()
 	{
 		SubscribeEvents();
+
 	}
 
 	private void SubscribeEvents()
@@ -50,6 +56,7 @@ public class PlayerBlockCreateManager : MonoBehaviour
 		PlayerSignals.Instance.onPlayerAnsweredRight += OnPlayerAnsweredRight;
 		CoreGameSignals.Instance.onPlay += OnPlay;
 		CoreGameSignals.Instance.onRestartLevel += OnRestartLevel;
+		QuestionSignals.Instance.onBlocksFirstMove += OnBlocksFirstMove;
     }
 
 	private void UnsubscribeEvents()
@@ -57,6 +64,7 @@ public class PlayerBlockCreateManager : MonoBehaviour
 		PlayerSignals.Instance.onPlayerAnsweredRight -= OnPlayerAnsweredRight;
 		CoreGameSignals.Instance.onPlay -= OnPlay;
 		CoreGameSignals.Instance.onRestartLevel -= OnRestartLevel;
+		QuestionSignals.Instance.onBlocksFirstMove -= OnBlocksFirstMove;
 	}
 
 	private void OnDisable()
@@ -68,25 +76,32 @@ public class PlayerBlockCreateManager : MonoBehaviour
 
 	private void Start()
 	{
+		_canBlocksInitialize = true;
 	}
-
+	public async void BlocksFirstInitialize()//task yazarak kullan.
+	{
+		while (!_canBlocksInitialize)
+		{
+			await Task.Yield();
+		}
+		InitializeBlocks();
+	}
 	private void InitializeBlocks()
-    {
-		StartCoroutine(CreateBlocks(_initializeBlockCounts, ""));
-    }
+	{
+		StartCoroutine(CreateBlocks(_initializeBlockCounts, String.Concat(Enumerable.Repeat(" ", _data.InitializeBlockCounts))));
+	}
 
 	private IEnumerator CreateBlocks(int charCount, string word)
     {
+		QuestionSignals.Instance.onPlayerChoosedWord?.Invoke(word);
+
 		yield return new WaitForSeconds(1f);
 		for (int i = 0; i < charCount; i++)
 		{
 			GameObject block = PoolSignals.Instance.onGetObject(PoolEnums.Block);
 			block.transform.localScale = Vector3.zero;
 			block.transform.position = new Vector3(0, blockIndeks++, 5);
-			if (word != "")
-			{
-				block.transform.GetChild(0).GetComponent<TextMeshPro>().text = word[word.Length - i - 1].ToString();
-			}
+			
 			block.SetActive(true);
 			block.transform.DOScale(Vector3.one, 0.5f);
 
@@ -99,7 +114,9 @@ public class PlayerBlockCreateManager : MonoBehaviour
 
 	private void OnPlay()
     {
-		InitializeBlocks();
+		//InitializeBlocks();
+		//BlocksFirstInitialize();
+
 
 	}
 	private void OnPlayerAnsweredRight(int charCount, string word)
@@ -108,6 +125,10 @@ public class PlayerBlockCreateManager : MonoBehaviour
 		charCount = word.Length;
 		StartCoroutine(CreateBlocks(charCount, word));
     }
+	private void OnBlocksFirstMove()
+	{
+		InitializeBlocks();
+	}
 
 	private void OnRestartLevel()
     {

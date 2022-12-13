@@ -12,9 +12,11 @@ public class PoolManager : MonoBehaviour
     #region Serialized Variables
 
     [SerializeField] private GameObject blockPrefab;
+    [SerializeField] private GameObject enemyBlock0, enemyBlock1, enemyBlock2, enemyBlock3;
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private GameObject textPrefab;
     [SerializeField] private GameObject particlePrefab;
+    [SerializeField] private GameObject cubePrefab;
 
     [SerializeField] private Dictionary<PoolEnums, List<GameObject>> poolDictionary;
 
@@ -23,6 +25,7 @@ public class PoolManager : MonoBehaviour
     [SerializeField] private int amountParticle = 5;
     [SerializeField] private int amountEnemies = 5;
     [SerializeField] private int amountTexts = 200;
+    [SerializeField] private int amountCube = 10;
 
 
 
@@ -41,6 +44,12 @@ public class PoolManager : MonoBehaviour
         poolDictionary = new Dictionary<PoolEnums, List<GameObject>>();
         InitializePool(PoolEnums.Block, blockPrefab, amountBlocks);
         InitializePool(PoolEnums.Enemy, enemyPrefab, amountEnemies);
+        InitializePool(PoolEnums.Cube, cubePrefab, amountCube);
+
+        InitializePool(PoolEnums.EnemyBlock0, enemyBlock0, amountBlocks);
+        InitializePool(PoolEnums.EnemyBlock1, enemyBlock1, amountBlocks);
+        InitializePool(PoolEnums.EnemyBlock2, enemyBlock2, amountBlocks);
+        InitializePool(PoolEnums.EnemyBlock3, enemyBlock3, amountBlocks);
         //InitializePool(PoolEnums.Particle, particlePrefab, amountParticle);
     }
 
@@ -113,6 +122,11 @@ public class PoolManager : MonoBehaviour
         //reset
         ResetPool(PoolEnums.Block);
         ResetPool(PoolEnums.Enemy);
+        ResetPool(PoolEnums.EnemyBlock0);
+        ResetPool(PoolEnums.EnemyBlock1);
+        ResetPool(PoolEnums.EnemyBlock2);
+        ResetPool(PoolEnums.EnemyBlock3);
+        ResetPool(PoolEnums.Cube);
         //ResetPool(PoolEnums.Particle);
     }
 

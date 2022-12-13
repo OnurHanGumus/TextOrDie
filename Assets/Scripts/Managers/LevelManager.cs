@@ -157,7 +157,7 @@ namespace Managers
         {
             for (int i = 0; i < _data.OtherPlayerPositions.Length; i++)
             {
-                GameObject block = PoolSignals.Instance.onGetObject(PoolEnums.Block);
+                GameObject block = PoolSignals.Instance.onGetObject(PoolEnums.Cube);
                 block.transform.position = new Vector3(_data.OtherPlayerPositions[i].x, _data.OtherPlayerPositions[i].y - 0.5f, _data.OtherPlayerPositions[i].z);
                 block.SetActive(true);
                 GameObject otherPlayer = PoolSignals.Instance.onGetObject(PoolEnums.Enemy);
