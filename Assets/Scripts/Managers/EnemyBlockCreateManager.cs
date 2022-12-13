@@ -6,6 +6,8 @@ using DG.Tweening;
 using Enums;
 using System;
 using TMPro;
+using Data.ValueObject;
+using Data.UnityObject;
 
 public class EnemyBlockCreateManager : MonoBehaviour
 {
@@ -15,17 +17,29 @@ public class EnemyBlockCreateManager : MonoBehaviour
 	#endregion
 
 	#region SerializeField Variables
-	[SerializeField] private int blockIndeks = 1, initializeBlockCounts = 5;
+	[SerializeField] private int blockIndeks = 1;
 	[SerializeField] private int enemyId = 0;
 
 	#endregion
 
 	#region Private Variables
+	private int _initializeBlockCounts = 5;
+	private LevelData _data;
+
 	#endregion
 	#endregion
 	private void Awake()
 	{
+		Init();
 	}
+
+	private void Init()
+	{
+		_data = GetData();
+		_initializeBlockCounts = _data.InitializeBlockCounts;
+	}
+	private LevelData GetData() => Resources.Load<CD_Level>("Data/CD_Level").Data;
+
 	#region Event Subscriptions
 
 	private void OnEnable()
@@ -68,7 +82,7 @@ public class EnemyBlockCreateManager : MonoBehaviour
 
 	private void InitializeBlocks()
     {
-		StartCoroutine(CreateBlocks(5, ""));
+		StartCoroutine(CreateBlocks(_initializeBlockCounts, ""));
     }
 
 	private IEnumerator CreateBlocks(int charCount, string word)
@@ -84,7 +98,7 @@ public class EnemyBlockCreateManager : MonoBehaviour
                 block.transform.GetChild(0).GetComponent<TextMeshPro>().text = word[word.Length - i - 1].ToString();
             }
             block.SetActive(true);
-			block.transform.DOScale(new Vector3(1, 1, 1), 0.5f);
+			block.transform.DOScale(Vector3.one, 0.5f);
 
 
 
