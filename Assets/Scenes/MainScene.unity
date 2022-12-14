@@ -1902,7 +1902,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1921236443}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &256051377
 GameObject:
@@ -6702,7 +6702,7 @@ GameObject:
   - component: {fileID: 1496417495}
   - component: {fileID: 1496417494}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: WordIndeksManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6731,12 +6731,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1496417493}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 1921236443}
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1501304402
 GameObject:
@@ -8392,6 +8392,7 @@ Transform:
   - {fileID: 658509477}
   - {fileID: 735196703}
   - {fileID: 159131480}
+  - {fileID: 1496417495}
   - {fileID: 192889014}
   m_Father: {fileID: 0}
   m_RootOrder: 1
