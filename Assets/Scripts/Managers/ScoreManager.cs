@@ -7,7 +7,6 @@ using Data.ValueObject;
 using Extentions;
 using Keys;
 using Signals;
-using Sirenix.OdinInspector;
 using UnityEngine;
 using Enums;
 
@@ -30,7 +29,6 @@ namespace Managers
         #region Private Variables
 
         private int _score;
-        [ShowInInspector]
         public int Score
         {
             get { return _score; }

@@ -11,9 +11,9 @@ Material:
   m_Shader: {fileID: 4800000, guid: f04c9486b297dd848909db26983c9ddb, type: 3}
   m_ShaderKeywords: ADVANCED_LIGHTING _CROSSPAN_INTERSECTION _DEPTH_TEX _ENVIRONMENTREFLECTIONS_OFF
     _FOAM _NORMALMAP _RECEIVE_SHADOWS_OFF _SHARP_INERSECTION _SIMPLE_LIGHTING _UNLIT
-    _WAVES _WORLDSPACEUV_ON
+    _WORLDSPACEUV_ON
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
+  m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 3000
   stringTagMap: {}
@@ -107,7 +107,7 @@ Material:
     - _CrossPan_IntersectionOn: 0
     - _Cull: 2
     - _Cutoff: 0.5
-    - _Depth: 0.51
+    - _Depth: 5.01
     - _DepthExp: 1
     - _DepthMode: 0
     - _DepthTexture: 1
@@ -126,10 +126,10 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _HorizonDistance: 17.1
+    - _HorizonDistance: 7.6
     - _IntersectionClipping: 0.428
     - _IntersectionFalloff: 1
-    - _IntersectionLength: 1.79
+    - _IntersectionLength: 1.77
     - _IntersectionRippleDist: 64
     - _IntersectionRippleStrength: 0.355
     - _IntersectionSize: 0.944
@@ -160,7 +160,7 @@ Material:
     - _Reflectivity: 1
     - _RefractionAmount: 0.05
     - _RefractionOn: 0
-    - _RefractionStrength: 0.267
+    - _RefractionStrength: 0
     - _RimRize: 1
     - _RimTiling: 0.025
     - _SHARP_INERSECTIONOn: 1
@@ -172,13 +172,13 @@ Material:
     - _SimpleLighting: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
-    - _SparkleIntensity: 0.32
-    - _SparkleSize: 0.504
+    - _SparkleIntensity: 0
+    - _SparkleSize: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _SunReflectionDistortion: 0.703
+    - _SunReflectionDistortion: 0.49
     - _SunReflectionPerturbance: 0.548
-    - _SunReflectionSize: 1
+    - _SunReflectionSize: 0.943
     - _SunReflectionStrength: 1
     - _Surface: 0
     - _TEXTURE_INTERSECTIONOn: 0
@@ -192,7 +192,7 @@ Material:
     - _WaveSpeed: 1
     - _WaveSteepness: 0
     - _WaveTint: 0.029
-    - _WavesOn: 1
+    - _WavesOn: 0
     - _WorkflowMode: 1
     - _WorldSpaceUV: 1
     - _ZWrite: 1

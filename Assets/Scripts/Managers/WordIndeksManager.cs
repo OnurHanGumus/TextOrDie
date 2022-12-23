@@ -95,7 +95,6 @@ public class WordIndeksManager : MonoBehaviour
 			return playerWord[playerWord.Length - playerIndeks++ - 1].ToString();
 		}
 		string word = enemyWordArray[id];
-		Debug.Log(word.Length);
 		return word[word.Length - enemyIndeksArray[id]++ - 1].ToString();
 	}
 

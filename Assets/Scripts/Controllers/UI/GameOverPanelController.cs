@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Sirenix.OdinInspector;
 
 public class GameOverPanelController : MonoBehaviour
 {
@@ -79,7 +78,6 @@ public class GameOverPanelController : MonoBehaviour
         UISignals.Instance.onOpenPanel?.Invoke(UIPanels.StartPanel);
     }
 
-    [Button]
     public void Open()
     {
         CoreGameSignals.Instance.onLevelFailed?.Invoke();

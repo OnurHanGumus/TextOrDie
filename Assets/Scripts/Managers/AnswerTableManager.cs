@@ -3,7 +3,6 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Signals;
-using Sirenix.OdinInspector;
 
 public class AnswerTableManager : MonoBehaviour
 {
@@ -23,7 +22,6 @@ public class AnswerTableManager : MonoBehaviour
 	#endregion
 
 	#region Private Variables
-	[ShowInInspector]
 	private List<Row> _rowList = new List<Row>();
 	private bool _isLoaded = false;
 	#endregion
